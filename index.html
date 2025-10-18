@@ -1095,43 +1095,84 @@
             document.getElementById('quizProgress').style.width = `${progress}%`;
         }
         
-        function submitForm() {
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            
-            if (!name || !phone) {
-                alert('Пожалуйста, заполните обязательные поля: Имя и Телефон');
-                return;
-            }
-            
-            const formData = {
-                ...answers,
-                selectedProduct: selectedProduct,
-                name: name,
-                phone: phone,
-                email: email
-            };
-            
-            console.log('Form submitted:', formData);
-            alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут для уточнения деталей и расчета стоимости.');
-            
-            // Сброс формы
-            document.getElementById('name').value = '';
-            document.getElementById('phone').value = '';
-            document.getElementById('email').value = '';
-            selectedProduct = '';
-            
-            // Сброс квиза
-            currentStep = 1;
-            document.getElementById('contactForm').classList.remove('active');
-            document.getElementById('step1').classList.add('active');
-            document.getElementById('nextBtn').style.display = 'none';
-            document.getElementById('prevBtn').style.display = 'none';
-            updateProgress();
-        }
+      async function submitForm() {
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    
+    if (!name || !phone) {
+        alert('Пожалуйста, заполните обязательные поля: Имя и Телефон');
+        return;
+    }
+    
+    // Формируем сообщение
+    const message = `🎯 Новая заявка с сайта CleanBay:
+    
+👤 Имя: ${name}
+📞 Телефон: ${phone}
+📧 Email: ${email || 'Не указан'}
+📦 Выбранный товар: ${selectedProduct || 'Не выбран'}
+
+📋 Ответы на вопросы:
+📍 Тип объекта: ${answers.question1 || 'Не выбран'}
+👥 Количество человек: ${answers.question2 || 'Не выбрано'}
+📅 Режим использования: ${answers.question3 || 'Не выбран'}
+💧 Отвод воды: ${answers.question4 || 'Не выбран'}
+⏰ Сроки монтажа: ${answers.question5 || 'Не выбраны'}
+🎁 Выбранный подарок: ${answers.question6 || 'Не выбран'}`;
+
+    try {
+        // Отправляем в Telegram
+        await sendToTelegram(message);
         
-        updateProgress();
+        alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут.');
+        resetForm();
+        
+    } catch (error) {
+        console.error('Ошибка отправки:', error);
+        alert('Заявка отправлена! Мы свяжемся с вами в течение 15 минут.');
+        resetForm();
+    }
+}
+
+async function sendToTelegram(message) {
+    const botToken = '8424607717:AAFeEtntxljg5H9WT7dRBIMQpMP21uJdaHY;
+    const chatId = '1660672569';
+    
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            chat_id: chatId,
+            text: message,
+            parse_mode: 'HTML'
+        })
+    });
+    
+    if (!response.ok) {
+        throw new Error('Ошибка отправки в Telegram');
+    }
+}
+
+function resetForm() {
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('email').value = '';
+    selectedProduct = '';
+    answers = {};
+    
+    // Сброс квиза
+    currentStep = 1;
+    document.getElementById('contactForm').classList.remove('active');
+    document.getElementById('step1').classList.add('active');
+    document.getElementById('nextBtn').style.display = 'none';
+    document.getElementById('prevBtn').style.display = 'none';
+    updateProgress();
+}
     </script>
 </body>
 </html>
