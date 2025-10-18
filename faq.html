@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Частые вопросы | CleanBay - Септики для Иркутской области</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2A9D8F;
+            --primary-dark: #1D7874;
+            --secondary: #E76F51;
+            --accent: #E9C46A;
+            --dark: #264653;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --border: #E0E0E0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .phone {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            background: rgba(42, 157, 143, 0.1);
+        }
+
+        /* FAQ Page Styles */
+        .faq-hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .faq-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .faq-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .faq-content {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .faq-category {
+            margin-bottom: 4rem;
+        }
+
+        .faq-category h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 2rem;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateX(5px);
+        }
+
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-answer {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .contact-promo {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 4rem 0;
+        }
+
+        .contact-promo h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--secondary);
+            color: white;
+            padding: 18px 35px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 111, 81, 0.3);
+            margin-top: 1.5rem;
+        }
+        
+        .btn:hover {
+            background: #D45A3C;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 111, 81, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+        }
+
+        @media (max-width: 768px) {
+            .faq-hero h1 { font-size: 2.2rem; }
+            .faq-hero { padding: 120px 0 60px; }
+            nav { display: none; }
+            .faq-item { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Clean<span>Bay</span></div>
+            <nav>
+                <a href="index.html">Главная</a>
+                <a href="faq.html">Вопросы</a>
+                <a href="index.html#catalog">Каталог</a>
+                <a href="index.html#quiz">Расчет</a>
+            </nav>
+            <div class="phone">+7 (3952) 123-45-67</div>
+        </div>
+    </header>
+
+    <!-- FAQ Hero -->
+    <section class="faq-hero">
+        <div class="container">
+            <h1>Частые вопросы о септиках</h1>
+            <p>Подробные ответы на все ваши вопросы о выборе, установке и эксплуатации септиков</p>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="faq-content">
+        <div class="container">
+            <!-- Выбор и установка -->
+            <div class="faq-category">
+                <h2>🤔 Выбор и установка</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">❄️ Не замерзнет ли зимой?</div>
+                        <div class="faq-answer">
+                            <p>Септик устанавливается на глубину 2м - это средний уровень промерзания почвы в Сибирском регионе, поэтому дно септика находится в тепле. Сливаемая вода положительной температуры и, к тому же, реакция брожения (жизнедеятельность микробов) внутри септика идёт с выработкой тепла. Помимо этого во время монтажа септик укрывается пеноплексом на уровне горловины. Получается, что септик зимой работает как термос, в котором всегда тепло.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">👃 Будет ли запах на участке?</div>
+                        <div class="faq-answer">
+                            <p>Запах отсутствует, если монтаж произведен правильно. Для этого в доме должен быть фановый стояк и вентиляционный грибок в заключительном колодце канализации. Если в доме нет грамотной вентиляции, необходим альтернативный фановый стояк до входа в септик. Вентиляция септика обеспечивает правильный процесс окисления.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">🚗 Выдержит ли давление грунта?</div>
+                        <div class="faq-answer">
+                            <p>Правильный монтаж септика по инструкции обеспечивает его защиту от давления. Если нет грунтовых вод, то достаточно обсыпать септик песчано-цементной смесью. Если есть грунтовые воды, то надежность установки обеспечит якорение септика к бетонной плите, положенной на дно котлована.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">⏱️ Сколько длится монтаж "под ключ"?</div>
+                        <div class="faq-answer">
+                            <p>Как правило от четырёх до восьми часов. Если очень сложный случай, то дольше.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">🛠️ Могу ли я сделать монтаж самостоятельно?</div>
+                        <div class="faq-answer">
+                            <p>Большинство покупателей делают монтаж септика самостоятельно, четко следуя инструкции, прописанной в техническом паспорте.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Технические вопросы -->
+            <div class="faq-category">
+                <h2>🔧 Технические вопросы</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">💧 Как понять уровень грунтовых вод на участке?</div>
+                        <div class="faq-answer">
+                            <p><strong>Правильно:</strong> заказать геологию участка<br>
+                            <strong>Просто:</strong> оценить уровень воды весной (апрель-май) выкопать/пробурить яму глубиной 2 метра или до уровня грунтовых вод.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">📏 Какой толщины стенки изделий?</div>
+                        <div class="faq-answer">
+                            <p>10-15 мм</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">🔌 Что делать, если электричество непостоянное?</div>
+                        <div class="faq-answer">
+                            <p>Ограничить количество слива во время отключения электричества. Запас объема есть в каждом септике.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">🔄 Нужен постоянный сток для поддержания септика?</div>
+                        <div class="faq-answer">
+                            <p>И да, и нет, анаэробные бактерии живут в септике до 14 дней без поступления стока.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">🛑 Как подготовить септик, если не планируем пользоваться им долгое время?</div>
+                        <div class="faq-answer">
+                            <p>Если это модель для высоких грунтовых вод, то необходимо отключить септик от сети, очистить и наполнить чистой водой на треть. Если модель септика энергонезависима, то очистить и наполнить чистой водой на треть.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Эксплуатация и обслуживание -->
+            <div class="faq-category">
+                <h2>🛠️ Эксплуатация и обслуживание</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">🚗 Можно наезжать на септик машиной?</div>
+                        <div class="faq-answer">
+                            <p>Можно, но для этого нужно монтировать плиту разгрузки, наши инженеры могут сделать необходимые расчёты.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">🌳 Можно поливать очищенной водой после септика деревья и кусты?</div>
+                        <div class="faq-answer">
+                            <p>Нельзя.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">🧻 Можно пользоваться химией и сбрасывать в канализацию туалетную бумагу?</div>
+                        <div class="faq-answer">
+                            <p>Можно.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">🔧 Какое сервисное обслуживание у септика?</div>
+                        <div class="faq-answer">
+                            <p>Один раз в год нужно вызывать ассенизационную машину и откачать все камеры септика, вновь залить его чистой водой.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">⚡ Если у меня перегорит насос, где его брать?</div>
+                        <div class="faq-answer">
+                            <p>Для септика используется поплавковый погружной фекальный насос, который продаётся везде. Заменить его - 5 минут самостоятельной работы.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Гарантия и документы -->
+            <div class="faq-category">
+                <h2>📋 Гарантия и документы</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">🛡️ Есть ли гарантия на монтаж?</div>
+                        <div class="faq-answer">
+                            <p>На монтаж "под ключ" и самостоятельный монтаж четко по инструкции действует гарантия 12 месяцев - полный природный цикл.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">🏗️ Зачем засыпать песчано-цементную смесь?</div>
+                        <div class="faq-answer">
+                            <p>Песчано-цементная смесь необходима для защиты септика от подвижки грунта и корней деревьев.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Контактный промо-блок -->
+            <div class="contact-promo">
+                <h3>Не нашли ответ на свой вопрос?</h3>
+                <p>Наши специалисты с радостью проконсультируют вас по любым вопросам</p>
+                <a href="index.html#quiz" class="btn">🔄 Получить консультацию</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CleanBay</h3>
+                    <p>Септики для Иркутской области. Надежные решения для вашего комфорта.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>📞 +7 (3952) 123-45-67</p>
+                    <p>📧 info@cleanbay.ru</p>
+                    <p>📍 Иркутская область</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Режим работы</h3>
+                    <p>Пн-Пт: 9:00 - 18:00</p>
+                    <p>Сб: 10:00 - 16:00</p>
+                    <p>Вс: выходной</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 CleanBay. Все права защищены. | <a href="index.html" style="color: var(--primary);">Вернуться на главную</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
