@@ -1,1 +1,866 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanBay | Септики для Иркутской области - Современные решения</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2A9D8F;
+            --primary-dark: #1D7874;
+            --secondary: #E76F51;
+            --accent: #E9C46A;
+            --dark: #264653;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --border: #E0E0E0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .phone {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.03"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+        }
+        
+        .hero-content {
+            position: relative;
+            color: white;
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--secondary);
+            color: white;
+            padding: 18px 35px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 111, 81, 0.3);
+        }
+        
+        .btn:hover {
+            background: #D45A3C;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 111, 81, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark);
+        }
+        
+        /* Catalog Section */
+        .catalog {
+            padding: 100px 0;
+            background: var(--light);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            letter-spacing: -1px;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-content {
+            padding: 2rem;
+        }
+        
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-note {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Блок для Байкала */
+        .baikal-special {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .baikal-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .baikal-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .compliance-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Quiz Section */
+        .quiz-section {
+            padding: 100px 0;
+            background: var(--dark);
+            color: white;
+        }
+        
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .quiz-step {
+            display: none;
+        }
+        
+        .quiz-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .quiz-option {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            margin: 10px 0;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-size: 1rem;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background: rgba(42, 157, 143, 0.1);
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--primary);
+            background: rgba(42, 157, 143, 0.2);
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        /* Features */
+        .features {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+        }
+        
+        /* Utility Classes */
+        .text-accent { color: var(--accent); }
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section-header h2 { font-size: 2.2rem; }
+            .btn-group { flex-direction: column; }
+            .quiz-container { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Clean<span>Bay</span></div>
+            <div class="phone">+7 (3952) 123-45-67</div>
+        </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Септики для Иркутской области <span class="text-accent">с гарантией</span></h1>
+                <p>Профессиональные решения для загородной канализации. Работаем по всей Иркутской области, включая зону Байкала.</p>
+                <div class="btn-group">
+                    <button class="btn" onclick="startQuiz()">
+                        🚀 Рассчитать стоимость
+                    </button>
+                    <button class="btn btn-outline" onclick="scrollToCatalog()">
+                        📦 Смотреть каталог
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="catalog" id="catalog">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наши <span class="text-primary">решения</span></h2>
+                <p>Подберем оптимальный септик для вашего дома и участка</p>
+            </div>
+            
+            <div class="catalog-grid">
+                <!-- БИОпорт 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        💧
+                        <div class="product-badge">Хит</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">БИОпорт 3</h3>
+                        <ul class="product-features">
+                            <li>👥 До 3 человек</li>
+                            <li>📏 Объем: 1800 л</li>
+                            <li>⚡ Залповый сброс: 450 л</li>
+                            <li>🔄 Степень очистки: 98%</li>
+                            <li>🏠 Идеально для дачи</li>
+                        </ul>
+                        <div class="product-price">от 89 900 ₽</div>
+                        <p class="price-note">Цена под ключ с монтажом</p>
+                        <button class="btn" onclick="selectProduct('БИОпорт 3')">Выбрать</button>
+                    </div>
+                </div>
+
+                <!-- БИОпорт 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        💧💧
+                        <div class="product-badge">Популярный</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">БИОпорт 5</h3>
+                        <ul class="product-features">
+                            <li>👥 До 5 человек</li>
+                            <li>📏 Объем: 2500 л</li>
+                            <li>⚡ Залповый сброс: 650 л</li>
+                            <li>🔄 Степень очистки: 98%</li>
+                            <li>🏡 Для семьи</li>
+                        </ul>
+                        <div class="product-price">от 119 900 ₽</div>
+                        <p class="price-note">Цена под ключ с монтажом</p>
+                        <button class="btn" onclick="selectProduct('БИОпорт 5')">Выбрать</button>
+                    </div>
+                </div>
+
+                <!-- БИОпорт 8 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        💧💧💧
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">БИОпорт 8</h3>
+                        <ul class="product-features">
+                            <li>👥 До 8 человек</li>
+                            <li>📏 Объем: 3500 л</li>
+                            <li>⚡ Залповый сброс: 950 л</li>
+                            <li>🔄 Степень очистки: 98%</li>
+                            <li>🏘️ Для большого дома</li>
+                        </ul>
+                        <div class="product-price">от 159 900 ₽</div>
+                        <p class="price-note">Цена под ключ с монтажом</p>
+                        <button class="btn" onclick="selectProduct('БИОпорт 8')">Выбрать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок для Байкала -->
+    <section class="baikal-special">
+        <div class="container">
+            <div class="baikal-content">
+                <h2>Особые условия для Байкала</h2>
+                <p>Устанавливаем септики, соответствующие строгим экологическим требованиям Байкальской природной территории. Гарантируем полное соответствие законодательству.</p>
+                
+                <div class="compliance-badges">
+                    <div class="badge">✅ Соответствие ФЗ-94</div>
+                    <div class="badge">🌿 Экологичный стандарт</div>
+                    <div class="badge">📋 Все разрешения</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Почему выбирают <span class="text-primary">CleanBay</span></h2>
+                <p>Мы обеспечиваем надежность и комфорт для вашего дома</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Быстрая доставка</h3>
+                    <p>Доставим оборудование в любую точку Иркутской области за 1-2 дня</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Монтаж за 1 день</h3>
+                    <p>Профессиональная установка под ключ всего за один рабочий день</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Гарантия 5 лет</h3>
+                    <p>Расширенная гарантия на оборудование и монтажные работы</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Для Иркутской области</h3>
+                    <p>Учитываем особенности грунтов и климата нашего региона</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section" id="quiz">
+        <div class="container">
+            <div class="section-header">
+                <h2>Подбор идеального септика</h2>
+                <p>Ответьте на 6 вопросов и получите точный расчет</p>
+            </div>
+            
+            <div class="quiz-container">
+                <div class="progress-bar">
+                    <div class="progress" id="quizProgress"></div>
+                </div>
+                
+                <div id="quizSteps">
+                    <!-- Step 1 -->
+                    <div class="quiz-step active" id="step1">
+                        <h3>1. Выберите тип объекта</h3>
+                        <button class="quiz-option" onclick="selectOption(1, 'Дача')">Дача</button>
+                        <button class="quiz-option" onclick="selectOption(1, 'Коттедж')">Коттедж</button>
+                        <button class="quiz-option" onclick="selectOption(1, 'Гостиница')">Гостиница</button>
+                        <button class="quiz-option" onclick="selectOption(1, 'Промышленный объект')">Промышленный объект</button>
+                        <button class="quiz-option" onclick="selectOption(1, 'Другое')">Другое</button>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="quiz-step" id="step2">
+                        <h3>2. Сколько человек будет пользоваться канализацией?</h3>
+                        <button class="quiz-option" onclick="selectOption(2, '1-3 человека')">1-3 человека</button>
+                        <button class="quiz-option" onclick="selectOption(2, '4-6 человек')">4-6 человек</button>
+                        <button class="quiz-option" onclick="selectOption(2, '7-11 человек')">7-11 человек</button>
+                        <button class="quiz-option" onclick="selectOption(2, '12+ человек')">12+ человек</button>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="quiz-step" id="step3">
+                        <h3>3. Как планируете использовать канализацию?</h3>
+                        <button class="quiz-option" onclick="selectOption(3, 'Круглогодично')">Круглогодично</button>
+                        <button class="quiz-option" onclick="selectOption(3, 'Зимой не пользуюсь')">Зимой не пользуюсь</button>
+                        <button class="quiz-option" onclick="selectOption(3, 'Зимой пользуюсь редко')">Зимой пользуюсь редко</button>
+                        <button class="quiz-option" onclick="selectOption(3, 'Пока не решил')">Пока не решил</button>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="quiz-step" id="step4">
+                        <h3>4. Куда будем отводить очищенную воду?</h3>
+                        <button class="quiz-option" onclick="selectOption(4, 'На грунт')">На грунт</button>
+                        <button class="quiz-option" onclick="selectOption(4, 'В дренажный колодец')">В дренажный колодец</button>
+                        <button class="quiz-option" onclick="selectOption(4, 'В ливневую канаву')">В ливневую канаву</button>
+                        <button class="quiz-option" onclick="selectOption(4, 'Ещё не решил')">Ещё не решил</button>
+                    </div>
+                    
+                    <!-- Step 5 -->
+                    <div class="quiz-step" id="step5">
+                        <h3>5. В какие сроки планируете монтаж?</h3>
+                        <button class="quiz-option" onclick="selectOption(5, 'Уже нужно')">Уже нужно</button>
+                        <button class="quiz-option" onclick="selectOption(5, 'В течение недели')">В течение недели</button>
+                        <button class="quiz-option" onclick="selectOption(5, 'В течение месяца')">В течение месяца</button>
+                        <button class="quiz-option" onclick="selectOption(5, 'В течение 2-3 месяцев')">В течение 2-3 месяцев</button>
+                        <button class="quiz-option" onclick="selectOption(5, 'Пока не решили')">Пока не решили</button>
+                    </div>
+                    
+                    <!-- Step 6 -->
+                    <div class="quiz-step" id="step6">
+                        <h3>6. Выберите Ваш подарок:</h3>
+                        <button class="quiz-option" onclick="selectOption(6, 'Аварийная сигнализация')">Аварийная сигнализация (защитит от переполнения)</button>
+                        <button class="quiz-option" onclick="selectOption(6, 'Дренажный насос')">Дренажный насос</button>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="quiz-step" id="contactForm">
+                        <h3>Получите расчет стоимости и подарок!</h3>
+                        <div class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Ваше имя *</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Номер телефона *</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email">
+                            </div>
+                            <button class="btn" onclick="submitForm()">Получить расчет и подарок</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button class="btn btn-outline" onclick="prevStep()" id="prevBtn" style="display: none; margin-right: 1rem;">Назад</button>
+                    <button class="btn" onclick="nextStep()" id="nextBtn" style="display: none;">Далее</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CleanBay</h3>
+                    <p>Септики для Иркутской области. Надежные решения для вашего комфорта.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>📞 +7 (3952) 123-45-67</p>
+                    <p>📧 info@cleanbay.ru</p>
+                    <p>📍 Иркутская область</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Режим работы</h3>
+                    <p>Пн-Пт: 9:00 - 18:00</p>
+                    <p>Сб: 10:00 - 16:00</p>
+                    <p>Вс: выходной</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 CleanBay. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6;
+        const answers = {};
+        let selectedProduct = '';
+        
+        function startQuiz() {
+            document.getElementById('quiz').scrollIntoView({behavior: 'smooth'});
+        }
+        
+        function scrollToCatalog() {
+            document.getElementById('catalog').scrollIntoView({behavior: 'smooth'});
+        }
+        
+        function selectProduct(product) {
+            selectedProduct = product;
+            startQuiz();
+        }
+        
+        function selectOption(step, value) {
+            const options = document.querySelectorAll(`#step${step} .quiz-option`);
+            options.forEach(option => option.classList.remove('selected'));
+            event.target.classList.add('selected');
+            answers[`question${step}`] = value;
+            document.getElementById('nextBtn').style.display = 'inline-block';
+            if (step > 1) {
+                document.getElementById('prevBtn').style.display = 'inline-block';
+            }
+        }
+        
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep++;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+                updateProgress();
+            } else if (currentStep === totalSteps) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                document.getElementById('contactForm').classList.add('active');
+                document.getElementById('nextBtn').style.display = 'none';
+                document.getElementById('prevBtn').style.display = 'inline-block';
+            }
+        }
+        
+        function prevStep() {
+            if (currentStep > 1) {
+                if (currentStep === totalSteps + 1) {
+                    document.getElementById('contactForm').classList.remove('active');
+                    document.getElementById(`step${totalSteps}`).classList.add('active');
+                    document.getElementById('nextBtn').style.display = 'inline-block';
+                } else {
+                    document.getElementById(`step${currentStep}`).classList.remove('active');
+                    currentStep--;
+                    document.getElementById(`step${currentStep}`).classList.add('active');
+                }
+                updateProgress();
+            }
+            
+            if (currentStep === 1) {
+                document.getElementById('prevBtn').style.display = 'none';
+            }
+        }
+        
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('quizProgress').style.width = `${progress}%`;
+        }
+        
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            
+            if (!name || !phone) {
+                alert('Пожалуйста, заполните обязательные поля: Имя и Телефон');
+                return;
+            }
+            
+            const formData = {
+                ...answers,
+                selectedProduct: selectedProduct,
+                name: name,
+                phone: phone,
+                email: email
+            };
+            
+            console.log('Form submitted:', formData);
+            alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в течение 15 минут для уточнения деталей и расчета стоимости.');
+            
+            // Сброс формы
+            document.getElementById('name').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('email').value = '';
+            selectedProduct = '';
+            
+            // Сброс квиза
+            currentStep = 1;
+            document.getElementById('contactForm').classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('prevBtn').style.display = 'none';
+            updateProgress();
+        }
+        
+        updateProgress();
+    </script>
+</body>
+</html>
