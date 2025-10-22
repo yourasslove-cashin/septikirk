@@ -316,17 +316,23 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
         
-        .product-image {
-            height: 220px;
-            display: flex;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .product-image img {
-            width: 100%;
-            object-fit: cover;
-        }
+    .product-image {
+    height: 220px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    background: var(--light);
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    max-width: 100%;
+    padding: 10px;
+}
         
         .product-badge {
             position: absolute;
