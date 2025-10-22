@@ -547,24 +547,30 @@
             <!-- Main Category Navigation -->
             <div class="main-category-nav">
                 <button class="main-category-btn active" onclick="filterMainCategory('house')">Для частного дома</button>
-                <button class="main-category-btn" onclick="filterMainCategory('business')">Для бизнеса</button>
             </div>
 
             <!-- Sub Category Navigation -->
             <div class="sub-category-nav">
-                <button class="sub-category-btn active" onclick="filterSubCategory('all')">Все септики</button>
-                <button class="sub-category-btn" onclick="filterSubCategory('low-groundwater')">Для низких грунтовых вод</button>
-                <button class="sub-category-btn" onclick="filterSubCategory('high-groundwater')">Для высоких грунтовых вод</button>
-                <button class="sub-category-btn" onclick="filterSubCategory('storage')">Накопительные</button>
-                <button class="sub-category-btn" onclick="filterSubCategory('dacha')">Для дачи</button>
-                <button class="sub-category-btn" onclick="filterSubCategory('additional')">Дополнительное оборудование</button>
+                <button class="sub-category-btn active" onclick="filterSubCategory('all')">Все товары</button>
+                <button class="sub-category-btn" onclick="filterSubCategory('septic')">Септики</button>
+                <button class="sub-category-btn" onclick="filterSubCategory('dacha')">Септики для дачи</button>
+                <button class="sub-category-btn" onclick="filterSubCategory('station')">Станции очистки</button>
+                <button class="sub-category-btn" onclick="filterSubCategory('cesspool')">Кессоны для скважин</button>
+                <button class="sub-category-btn" onclick="filterSubCategory('well')">Колодцы</button>
+                <button class="sub-category-btn" onclick="filterSubCategory('shower')">Бак для душа</button>
+                <button class="sub-category-btn" onclick="filterSubCategory('pontoon')">Понтоны</button>
+                <button class="sub-category-btn" onclick="filterSubCategory('coupling')">Муфты</button>
             </div>
             
             <!-- Септики для частного дома -->
             <div class="category-section" data-main-category="house">
-                <!-- Септики для низких грунтовых вод -->
-                <div class="products-section" data-sub-category="low-groundwater">
-                    <h3 class="category-title">Для низких грунтовых вод</h3>
+                
+                <!-- Септики -->
+                <div class="products-section" data-sub-category="septic">
+                    <h3 class="category-title">Септики</h3>
+                    
+                    <!-- Септики для низких грунтовых вод -->
+                    <h4 style="font-size: 1.4rem; margin: 2rem 0 1rem; color: var(--primary);">Для низких грунтовых вод</h4>
                     <div class="products-grid">
                         <!-- Септик Биопорт 1.5 -->
                         <div class="product-card" data-price="52900">
@@ -646,11 +652,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Септики для высоких грунтовых вод -->
-                <div class="products-section" data-sub-category="high-groundwater">
-                    <h3 class="category-title">Для высоких грунтовых вод</h3>
+                    <!-- Септики для высоких грунтовых вод -->
+                    <h4 style="font-size: 1.4rem; margin: 3rem 0 1rem; color: var(--primary);">Для высоких грунтовых вод</h4>
                     <div class="products-grid">
                         <!-- Септик Биопорт 1.5Н -->
                         <div class="product-card" data-price="59900">
@@ -732,11 +736,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Накопительные септики -->
-                <div class="products-section" data-sub-category="storage">
-                    <h3 class="category-title">Накопительные септики</h3>
+                    <!-- Накопительные септики -->
+                    <h4 style="font-size: 1.4rem; margin: 3rem 0 1rem; color: var(--primary);">Накопительные септики</h4>
                     <div class="products-grid">
                         <!-- Накопительный септик 2.5 -->
                         <div class="product-card" data-price="52900">
@@ -811,10 +813,194 @@
                     </div>
                 </div>
 
-                <!-- Дополнительное оборудование -->
-                <div class="products-section" data-sub-category="additional">
-                    <h3 class="category-title">Дополнительное оборудование</h3>
+                <!-- Станции очистки -->
+                <div class="products-section" data-sub-category="station">
+                    <h3 class="category-title">Станции биологической очистки</h3>
+                    <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
+                        <p>Станция биологической очистки хозяйственно-бытовых сточных вод Биопорт используется для устройства автономной канализации на загородных участках с сезонным или постоянным проживанием. Выпускается в двух вариантах – для низких и высоких грунтовых вод.</p>
+                    </div>
+                    
                     <div class="products-grid">
+                        <!-- Станция Биопорт 1.5 -->
+                        <div class="product-card" data-price="99900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/a/1/3/a13b0ed758a8d515f653ea8a0b8209ad/-/resize/600/f.png" alt="Станция Биопорт 1.5">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Станция Биопорт 1.5</h3>
+                                <p class="product-description">Для низкого уровня вод. Рассчитана на 3-4 человека</p>
+                                <ul class="product-features">
+                                    <li>🔬 Биологическая очистка</li>
+                                    <li>👥 3-4 человека</li>
+                                    <li>⚡ Энергозависимая</li>
+                                    <li>💧 Высокая степень очистки</li>
+                                </ul>
+                                <div class="product-price">99 900 ₽</div>
+                                <p class="price-note">Для постоянного проживания</p>
+                                <button class="btn" onclick="addToCart('Станция Биопорт 1.5', 99900)">Выбрать</button>
+                            </div>
+                        </div>
+
+                        <!-- Станция Биопорт 1.5Н -->
+                        <div class="product-card" data-price="107900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/d/f/0/df0c596172c92258895d6a2a7dccc355/-/resize/600/f.png" alt="Станция Биопорт 1.5Н">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Станция Биопорт 1.5Н</h3>
+                                <p class="product-description">Для высокого уровня вод. Рассчитана на 3-4 человека</p>
+                                <ul class="product-features">
+                                    <li>🔬 Биологическая очистка</li>
+                                    <li>👥 3-4 человека</li>
+                                    <li>⚡ Энергозависимая</li>
+                                    <li>💧 Высокая степень очистки</li>
+                                </ul>
+                                <div class="product-price">107 900 ₽</div>
+                                <p class="price-note">Для высоких грунтовых вод</p>
+                                <button class="btn" onclick="addToCart('Станция Биопорт 1.5Н', 107900)">Выбрать</button>
+                            </div>
+                        </div>
+
+                        <!-- Станция Биопорт 2.5 -->
+                        <div class="product-card" data-price="129900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/f/b/a/fbaeb5453ba9805aaf32aa89ea669aad/-/resize/600/f.png" alt="Станция Биопорт 2.5">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Станция Биопорт 2.5</h3>
+                                <p class="product-description">Для низкого уровня вод. Рассчитана на 6 человек</p>
+                                <ul class="product-features">
+                                    <li>🔬 Биологическая очистка</li>
+                                    <li>👥 6 человек</li>
+                                    <li>⚡ Энергозависимая</li>
+                                    <li>💧 Высокая степень очистки</li>
+                                </ul>
+                                <div class="product-price">129 900 ₽</div>
+                                <p class="price-note">Для большой семьи</p>
+                                <button class="btn" onclick="addToCart('Станция Биопорт 2.5', 129900)">Выбрать</button>
+                            </div>
+                        </div>
+
+                        <!-- Станция Биопорт 2.5Н -->
+                        <div class="product-card" data-price="137900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/6/7/d/67d7988c4c8ea560b2b14bffb76f9575/-/resize/600/f.png" alt="Станция Биопорт 2.5Н">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Станция Биопорт 2.5Н</h3>
+                                <p class="product-description">Для высокого уровня вод. Рассчитана на 6 человек</p>
+                                <ul class="product-features">
+                                    <li>🔬 Биологическая очистка</li>
+                                    <li>👥 6 человек</li>
+                                    <li>⚡ Энергозависимая</li>
+                                    <li>💧 Высокая степень очистки</li>
+                                </ul>
+                                <div class="product-price">137 900 ₽</div>
+                                <p class="price-note">Для высоких грунтовых вод</p>
+                                <button class="btn" onclick="addToCart('Станция Биопорт 2.5Н', 137900)">Выбрать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Кессоны для скважин -->
+                <div class="products-section" data-sub-category="cesspool">
+                    <h3 class="category-title">Кессоны для скважин</h3>
+                    <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
+                        <p>Кессон - это емкость, позволяющая защитить скважину на вашем участке от замывания и промерзания, а также обслуживания в зимний период. Пластиковый кессон изготавливается из высокопрочного полиэтилена, конструкция усилена ребрами жесткости.</p>
+                    </div>
+                    
+                    <div class="products-grid">
+                        <!-- Кессон большой -->
+                        <div class="product-card" data-price="58900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/6/2/4/624d60f3b0e47c4365ed5eee27daa77a/-/resize/600/f.png" alt="Кессон большой">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Кессон большой</h3>
+                                <p class="product-description">Для скважин с дополнительным оборудованием</p>
+                                <ul class="product-features">
+                                    <li>🛡️ Защита скважины</li>
+                                    <li>❄️ От промерзания</li>
+                                    <li>🔧 Для оборудования</li>
+                                    <li>🏠 Долговечный</li>
+                                </ul>
+                                <div class="product-price">58 900 ₽</div>
+                                <p class="price-note">Серия Б (1450мм)</p>
+                                <button class="btn" onclick="addToCart('Кессон большой', 58900)">Выбрать</button>
+                            </div>
+                        </div>
+
+                        <!-- Кессон средний -->
+                        <div class="product-card" data-price="46900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/3/0/6/306edf0879131e382669b6b177771b5d/-/resize/600/f.png" alt="Кессон средний">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Кессон средний</h3>
+                                <p class="product-description">Для скважин и проходных колодцев</p>
+                                <ul class="product-features">
+                                    <li>🛡️ Защита скважины</li>
+                                    <li>❄️ От промерзания</li>
+                                    <li>🔧 Универсальный</li>
+                                    <li>🏠 Долговечный</li>
+                                </ul>
+                                <div class="product-price">46 900 ₽</div>
+                                <p class="price-note">Серия А (1050мм)</p>
+                                <button class="btn" onclick="addToCart('Кессон средний', 46900)">Выбрать</button>
+                            </div>
+                        </div>
+
+                        <!-- Дополнительная горловина для кессона -->
+                        <div class="product-card" data-price="7900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/c/b/8/cb86b567af885de4b73697f4d5d36743/-/resize/600/f.jpeg" alt="Дополнительная горловина">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Дополнительная горловина</h3>
+                                <p class="product-description">Для увеличения рабочей высоты изделий</p>
+                                <ul class="product-features">
+                                    <li>📏 Увеличение высоты</li>
+                                    <li>🔧 Универсальная</li>
+                                    <li>🔄 Для всех изделий</li>
+                                    <li>🏠 Долговечная</li>
+                                </ul>
+                                <div class="product-price">7 900 ₽</div>
+                                <p class="price-note">Для кессонов и колодцев</p>
+                                <button class="btn" onclick="addToCart('Дополнительная горловина', 7900)">Выбрать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Колодцы -->
+                <div class="products-section" data-sub-category="well">
+                    <h3 class="category-title">Дренажные колодцы</h3>
+                    <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
+                        <p>Дренажный колодец Биопорт - это полиэтиленовая емкость без дна. Она предназначена для окончательной очистки воды, которая прошла предварительную фильтрацию в септике, и организации дренажа на участках.</p>
+                    </div>
+                    
+                    <div class="products-grid">
+                        <!-- Дренажный колодец К-800 -->
+                        <div class="product-card" data-price="29900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/6/d/2/6d239877efef02d7e40b6cf994c1042b/-/resize/600/f.png" alt="Дренажный колодец К-800">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Дренажный колодец К-800</h3>
+                                <p class="product-description">Предназначен для отведения ливневых вод и доочистки сточных вод</p>
+                                <ul class="product-features">
+                                    <li>💧 Отведение вод</li>
+                                    <li>🌊 Ливневые стоки</li>
+                                    <li>🔄 Доочистка</li>
+                                    <li>🏠 Долговечный</li>
+                                </ul>
+                                <div class="product-price">29 900 ₽</div>
+                                <p class="price-note">Базовый вариант</p>
+                                <button class="btn" onclick="addToCart('Дренажный колодец К-800', 29900)">Выбрать</button>
+                            </div>
+                        </div>
+
                         <!-- Дренажный колодец К1 -->
                         <div class="product-card" data-price="39900">
                             <div class="product-image">
@@ -822,15 +1008,36 @@
                             </div>
                             <div class="product-content">
                                 <h3 class="product-title">Дренажный колодец К1</h3>
-                                <p class="product-description">Предназначен для отведения ливневых вод и доочистки сточных вод.</p>
+                                <p class="product-description">Предназначен для отведения ливневых вод и доочистки сточных вод</p>
                                 <ul class="product-features">
-                                    <li>✅ Для доочистки вод</li>
+                                    <li>💧 Отведение вод</li>
                                     <li>🌊 Ливневые стоки</li>
-                                    <li>⚡ Простая установка</li>
-                                    <li>🔄 Долговечный</li>
+                                    <li>🔄 Доочистка</li>
+                                    <li>🏠 Долговечный</li>
                                 </ul>
                                 <div class="product-price">39 900 ₽</div>
+                                <p class="price-note">Стандартный размер</p>
                                 <button class="btn" onclick="addToCart('Дренажный колодец К1', 39900)">Выбрать</button>
+                            </div>
+                        </div>
+
+                        <!-- Дренажный колодец К2 -->
+                        <div class="product-card" data-price="49900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/6/1/8/6189f3c8edfdd07d5d82dcdfa2cef310/-/resize/600/f.jpeg" alt="Дренажный колодец К2">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Дренажный колодец К2</h3>
+                                <p class="product-description">Предназначен для отведения ливневых вод и доочистки сточных вод</p>
+                                <ul class="product-features">
+                                    <li>💧 Отведение вод</li>
+                                    <li>🌊 Ливневые стоки</li>
+                                    <li>🔄 Доочистка</li>
+                                    <li>🏠 Долговечный</li>
+                                </ul>
+                                <div class="product-price">49 900 ₽</div>
+                                <p class="price-note">Увеличенный объем</p>
+                                <button class="btn" onclick="addToCart('Дренажный колодец К2', 49900)">Выбрать</button>
                             </div>
                         </div>
 
@@ -843,37 +1050,141 @@
                                 <h3 class="product-title">Дренажный тоннель</h3>
                                 <p class="product-description">Необходим для формирования поля поглощения очищенных сточных вод</p>
                                 <ul class="product-features">
-                                    <li>✅ Для очищенных вод</li>
-                                    <li>🌿 Экологичный</li>
-                                    <li>⚡ Высокая эффективность</li>
-                                    <li>🔄 Прочный</li>
+                                    <li>🌊 Поле поглощения</li>
+                                    <li>💧 Для очищенных вод</li>
+                                    <li>🔄 Эффективный</li>
+                                    <li>🏠 Долговечный</li>
                                 </ul>
                                 <div class="product-price">10 700 ₽</div>
+                                <p class="price-note">Для дренажных систем</p>
                                 <button class="btn" onclick="addToCart('Дренажный тоннель', 10700)">Выбрать</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Септики для бизнеса -->
-            <div class="category-section hidden" data-main-category="business">
-                <div class="products-section" data-sub-category="all">
-                    <h3 class="category-title">Решения для бизнеса</h3>
-                    <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
-                        <p>Профессиональные решения для гостиниц, ресторанов, производственных предприятий и других коммерческих объектов. Подберем оптимальное оборудование для вашего бизнеса.</p>
-                    </div>
+                <!-- Бак для душа -->
+                <div class="products-section" data-sub-category="shower">
+                    <h3 class="category-title">Бак для душа</h3>
                     <div class="products-grid">
-                        <div class="product-card" style="text-align: center; padding: 3rem;">
-                            <h3 style="margin-bottom: 1rem;">🚧 Раздел в разработке</h3>
-                            <p style="color: var(--gray);">Скоро здесь появятся решения для бизнеса:</p>
-                            <ul style="text-align: left; margin-top: 1rem; color: var(--gray);">
-                                <li>Очистные для поселка</li>
-                                <li>Канализация для гостиницы</li>
-                                <li>Насосные станции</li>
-                                <li>Колодцы связи</li>
-                                <li>Промышленные емкости</li>
-                            </ul>
+                        <!-- Бак для душа -->
+                        <div class="product-card" data-price="7900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/3/6/0/36098b0a3955d324be22ca37f68d0fe2.jpeg" alt="Бак для душа">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Бак для душа</h3>
+                                <p class="product-description">Бак для уличного душа Биопорт прост, удобен и крайне необходим на даче и в загородном доме</p>
+                                <ul class="product-features">
+                                    <li>🚿 Для душа</li>
+                                    <li>💧 Объем 225 л</li>
+                                    <li>☀️ С подогревом</li>
+                                    <li>🏠 Для дачи</li>
+                                </ul>
+                                <div class="product-price">7 900 ₽</div>
+                                <p class="price-note">Артикул: БПБД01</p>
+                                <button class="btn" onclick="addToCart('Бак для душа', 7900)">Выбрать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Понтоны -->
+                <div class="products-section" data-sub-category="pontoon">
+                    <h3 class="category-title">Пластиковые понтоны</h3>
+                    <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
+                        <p>Пластиковые понтоны - это универсальное средство для организации комфортного пространства на берегу реки или озера. С помощью понтонов можно не только смонтировать причал для лодки или катера, но и создать оригинальную зону отдыха на воде.</p>
+                    </div>
+                    
+                    <div class="products-grid">
+                        <!-- Понтон -->
+                        <div class="product-card" data-price="9900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/6/c/3/6c3561a27ab04d20c66496fc57c35e14.png" alt="Понтон">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Понтон</h3>
+                                <p class="product-description">Универсальное средство для организации комфортного пространства на воде</p>
+                                <ul class="product-features">
+                                    <li>🏖️ Для отдыха</li>
+                                    <li>🛥️ Причалы</li>
+                                    <li>🌊 На воде</li>
+                                    <li>🔧 Прочный</li>
+                                </ul>
+                                <div class="product-price">9 900 ₽</div>
+                                <p class="price-note">Артикул: БПП01</p>
+                                <button class="btn" onclick="addToCart('Понтон', 9900)">Выбрать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Муфты -->
+                <div class="products-section" data-sub-category="coupling">
+                    <h3 class="category-title">Муфты (гермовводы)</h3>
+                    <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
+                        <p>Муфты предназначены для герметизации соединений труб любого диаметра со стенами и перегородками. Всегда в наличии.</p>
+                    </div>
+                    
+                    <div class="products-grid">
+                        <!-- Муфта 16/25 -->
+                        <div class="product-card" data-price="1800">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/8/c/d/8cd1eff6b491daa075b4e3ec776d84fa.jpeg" alt="Муфта 16/25">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Муфта 16/25</h3>
+                                <p class="product-description">Герметизация соединений труб</p>
+                                <ul class="product-features">
+                                    <li>🔧 Герметизация</li>
+                                    <li>📏 16/25 мм</li>
+                                    <li>🔄 Универсальная</li>
+                                    <li>🏠 Для труб</li>
+                                </ul>
+                                <div class="product-price">1 800 ₽</div>
+                                <p class="price-note">Внутренний диаметр 16/25 мм</p>
+                                <button class="btn" onclick="addToCart('Муфта 16/25', 1800)">Выбрать</button>
+                            </div>
+                        </div>
+
+                        <!-- Муфта 32/40 -->
+                        <div class="product-card" data-price="2040">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/3/0/f/30f3868ac9668fd201b9ea5ce02dea3b.jpeg" alt="Муфта 32/40">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Муфта 32/40</h3>
+                                <p class="product-description">Герметизация соединений труб</p>
+                                <ul class="product-features">
+                                    <li>🔧 Герметизация</li>
+                                    <li>📏 32/40 мм</li>
+                                    <li>🔄 Универсальная</li>
+                                    <li>🏠 Для труб</li>
+                                </ul>
+                                <div class="product-price">2 040 ₽</div>
+                                <p class="price-note">Внутренний диаметр 32/40 мм</p>
+                                <button class="btn" onclick="addToCart('Муфта 32/40', 2040)">Выбрать</button>
+                            </div>
+                        </div>
+
+                        <!-- Муфта 50/57 -->
+                        <div class="product-card" data-price="2580">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/1/f/6/1f6501377ecd83eb6df663f7c5cab249.jpeg" alt="Муфта 50/57">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Муфта 50/57</h3>
+                                <p class="product-description">Герметизация соединений труб</p>
+                                <ul class="product-features">
+                                    <li>🔧 Герметизация</li>
+                                    <li>📏 50/57 мм</li>
+                                    <li>🔄 Универсальная</li>
+                                    <li>🏠 Для труб</li>
+                                </ul>
+                                <div class="product-price">2 580 ₽</div>
+                                <p class="price-note">Внутренний диаметр 50/57 мм</p>
+                                <button class="btn" onclick="addToCart('Муфта 50/57', 2580)">Выбрать</button>
+                            </div>
                         </div>
                     </div>
                 </div>
