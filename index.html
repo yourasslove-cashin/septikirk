@@ -470,13 +470,19 @@
         
         .product-image {
             height: 220px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: var(--light);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 3rem;
             position: relative;
+        }
+        
+        .product-image img {
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+            max-width: 100%;
+            padding: 10px;
         }
         
         .product-badge {
@@ -603,6 +609,32 @@
             font-family: monospace;
         }
         
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .checkbox-group input {
+            margin-top: 0.3rem;
+        }
+        
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.4;
+        }
+        
+        .checkbox-group a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
+        
         /* Features */
         .features {
             padding: 100px 0;
@@ -690,19 +722,33 @@
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--gray);
+            font-size: 0.9rem;
         }
-        
-        /* Utility Classes */
-        .text-accent { color: var(--accent); }
-        .text-primary { color: var(--primary); }
-        .text-secondary { color: var(--secondary); }
-        
-        .btn-group {
+
+        .footer-links {
             display: flex;
-            gap: 1rem;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
             flex-wrap: wrap;
         }
-        
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .legal-info {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-top: 1rem;
+            line-height: 1.4;
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .section-header h2 { font-size: 2.2rem; }
@@ -714,6 +760,7 @@
             .phone { font-size: 1rem; }
             .cart-btn span { display: none; }
             .cart-btn { padding: 10px 15px; }
+            .footer-links { flex-direction: column; gap: 1rem; }
         }
     </style>
 </head>
@@ -742,7 +789,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Септики для Иркутской области и Бурятии <span class="text-accent">с гарантией</span></h1>
+                <h1>Септики для частного дома и бизнеса <span class="text-accent">с гарантией</span></h1>
                 <p>Профессиональные решения для загородной канализации. Работаем по всей Иркутской области и Республике Бурятия.</p>
                 <div class="btn-group">
                     <button class="btn" onclick="startQuiz()">
@@ -850,6 +897,13 @@
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" id="email">
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="privacy" checked>
+                                <label for="privacy">
+                                    Я согласен на обработку персональных данных в соответствии с 
+                                    <a href="#">политикой конфиденциальности</a>
+                                </label>
                             </div>
                             <button class="btn" onclick="submitForm()">Получить расчет и подарок</button>
                         </div>
@@ -977,65 +1031,66 @@
             </div>
             
             <div class="catalog-grid">
-                <!-- БИОпорт 3 -->
+                <!-- Септик Биопорт 2.5 -->
                 <div class="product-card">
                     <div class="product-image">
-                        💧
+                        <img src="https://m-files.cdn1.cc/lpfile/0/8/8/088d7749ede2bb5be3224b03c080e1f0/-/resize/600/f.png" alt="Септик Биопорт 2.5">
                         <div class="product-badge">Хит</div>
                     </div>
                     <div class="product-content">
-                        <h3 class="product-title">БИОпорт 3</h3>
+                        <h3 class="product-title">Септик Биопорт 2.5</h3>
                         <ul class="product-features">
-                            <li>👥 До 3 человек</li>
-                            <li>📏 Объем: 1800 л</li>
-                            <li>⚡ Залповый сброс: 450 л</li>
-                            <li>🔄 Степень очистки: 98%</li>
-                            <li>🏠 Идеально для дачи</li>
-                        </ul>
-                        <div class="product-price">от 89 900 ₽</div>
-                        <p class="price-note">Цена под ключ с монтажом</p>
-                        <button class="btn" onclick="addToCart('БИОпорт 3', 89900)">Выбрать</button>
-                    </div>
-                </div>
-
-                <!-- БИОпорт 5 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        💧💧
-                        <div class="product-badge">Популярный</div>
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">БИОпорт 5</h3>
-                        <ul class="product-features">
-                            <li>👥 До 5 человек</li>
+                            <li>👥 4-5 человек</li>
                             <li>📏 Объем: 2500 л</li>
-                            <li>⚡ Залповый сброс: 650 л</li>
+                            <li>⚡ Энергонезависимый</li>
                             <li>🔄 Степень очистки: 98%</li>
-                            <li>🏡 Для семьи</li>
+                            <li>🏠 Для частного дома</li>
                         </ul>
-                        <div class="product-price">от 119 900 ₽</div>
-                        <p class="price-note">Цена под ключ с монтажом</p>
-                        <button class="btn" onclick="addToCart('БИОпорт 5', 119900)">Выбрать</button>
+                        <div class="product-price">69 900 ₽</div>
+                        <p class="price-note">Базовая комплектация</p>
+                        <button class="btn" onclick="addToCart('Септик Биопорт 2.5', 69900)">Выбрать</button>
                     </div>
                 </div>
 
-                <!-- БИОпорт 8 -->
+                <!-- Накопительный септик 2.5 -->
                 <div class="product-card">
                     <div class="product-image">
-                        💧💧💧
+                        <img src="https://m-files.cdn1.cc/lpfile/2/6/5/26564a93e21fd23fa5d8b2c12695819c/-/resize/600/f.png" alt="Накопительный септик 2.5">
+                        <div class="product-badge">Эконом</div>
                     </div>
                     <div class="product-content">
-                        <h3 class="product-title">БИОпорт 8</h3>
+                        <h3 class="product-title">Накопительный септик 2.5</h3>
                         <ul class="product-features">
-                            <li>👥 До 8 человек</li>
-                            <li>📏 Объем: 3500 л</li>
-                            <li>⚡ Залповый сброс: 950 л</li>
-                            <li>🔄 Степень очистки: 98%</li>
-                            <li>🏘️ Для большого дома</li>
+                            <li>👥 Для 4-5 человек</li>
+                            <li>📏 Объем: 2500 л</li>
+                            <li>🔄 Требует откачки</li>
+                            <li>💰 Экономичный вариант</li>
+                            <li>🏡 Альтернатива выгребной яме</li>
                         </ul>
-                        <div class="product-price">от 159 900 ₽</div>
-                        <p class="price-note">Цена под ключ с монтажом</p>
-                        <button class="btn" onclick="addToCart('БИОпорт 8', 159900)">Выбрать</button>
+                        <div class="product-price">52 900 ₽</div>
+                        <p class="price-note">Объем 2500 литров</p>
+                        <button class="btn" onclick="addToCart('Накопительный септик 2.5', 52900)">Выбрать</button>
+                    </div>
+                </div>
+
+                <!-- Станция Биопорт 2.5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://m-files.cdn1.cc/lpfile/f/b/a/fbaeb5453ba9805aaf32aa89ea669aad/-/resize/600/f.png" alt="Станция Биопорт 2.5">
+                        <div class="product-badge">Премиум</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Станция Биопорт 2.5</h3>
+                        <ul class="product-features">
+                            <li>👥 6 человек</li>
+                            <li>📏 Объем: 2500 л</li>
+                            <li>⚡ Энергозависимая</li>
+                            <li>🔬 Биологическая очистка</li>
+                            <li>💧 Очистка до 98%</li>
+                        </ul>
+                        <div class="product-price">129 900 ₽</div>
+                        <p class="price-note">Для постоянного проживания</p>
+                        <button class="btn" onclick="addToCart('Станция Биопорт 2.5', 129900)">Выбрать</button>
                     </div>
                 </div>
             </div>
@@ -1050,13 +1105,13 @@
     <section class="baikal-special">
         <div class="container">
             <div class="baikal-content">
-                <h2>Особые условия для Байкальского региона</h2>
-                <p>Устанавливаем септики, соответствующие строгим экологическим требованиям Байкальской природной территории. Гарантируем полное соответствие законодательству для Иркутской области и Республики Бурятия.</p>
+                <h2>Мы родились на Байкале, поэтому бережём его</h2>
+                <p>Как местные жители, мы понимаем всю ответственность за сохранение уникальной природы Байкальского региона. Наши септики соответствуют самым строгим экологическим стандартам.</p>
                 
                 <div class="compliance-badges">
-                    <div class="badge">✅ Соответствие ФЗ-94</div>
-                    <div class="badge">🌿 Экологичный стандарт</div>
-                    <div class="badge">📋 Все разрешения</div>
+                    <div class="badge">✅ Экологичный стандарт</div>
+                    <div class="badge">🌿 Безопасность для природы</div>
+                    <div class="badge">💧 Чистая вода Байкала</div>
                 </div>
             </div>
         </div>
@@ -1161,8 +1216,20 @@
                     <p>Вс: выходной</p>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>© 2024 CleanBay. Все права защищены. | <a href="faq.html" style="color: var(--primary);">Частые вопросы</a></p>
+                <div class="footer-links">
+                    <a href="#">Соглашение об обработке персональных данных</a>
+                    <a href="#">Политика конфиденциальности</a>
+                </div>
+                
+                <p>ИП Осипов Андрей Сергеевич | ИНН: 380117126847</p>
+                
+                <div class="legal-info">
+                    Сайт носит информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи 437(2) ГК РФ.
+                </div>
+                
+                <p style="margin-top: 1rem;">© 2024 CleanBay. Все права защищены.</p>
             </div>
         </div>
     </footer>
@@ -1320,6 +1387,7 @@
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
+            const privacy = document.getElementById('privacy').checked;
             
             if (!name || !phone) {
                 alert('Пожалуйста, заполните обязательные поля: Имя и Телефон');
@@ -1328,6 +1396,11 @@
             
             if (!validatePhone(document.getElementById('phone'))) {
                 alert('Пожалуйста, введите корректный номер телефона (11 цифр)');
+                return;
+            }
+            
+            if (!privacy) {
+                alert('Необходимо согласие на обработку персональных данных');
                 return;
             }
             
