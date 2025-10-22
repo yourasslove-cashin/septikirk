@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог продукции - Биопорт</title>
+    <style>
+        :root {
+            --primary-color: #2c7fb8;
+            --secondary-color: #7fcdbb;
+            --accent-color: #edf8b1;
+            --dark-color: #253237;
+            --light-color: #f8f9fa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 0 0 10px 10px;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .catalog-nav {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .nav-tab {
+            padding: 0.5rem 1rem;
+            background-color: var(--light-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab:hover {
+            background-color: var(--accent-color);
+        }
+
+        .nav-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            color: var(--dark-color);
+        }
+
+        .subcategory-title {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--primary-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-images {
+            display: flex;
+            height: 200px;
+        }
+
+        .product-images img {
+            width: 50%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.2rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 0.6rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d5f8a;
+        }
+
+        .btn-secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e2e6ea;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Каталог продукции Биопорт</h1>
+            <p class="subtitle">Качественные решения для канализации и водоснабжения</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="catalog-nav">
+            <h2>Категории продукции</h2>
+            <div class="nav-tabs">
+                <div class="nav-tab active">Для частного дома</div>
+                <div class="nav-tab">Для бизнеса</div>
+            </div>
+        </nav>
+
+        <section id="private-house">
+            <h2 class="category-title">Для частного дома</h2>
+            
+            <div class="category-section">
+                <h3 class="subcategory-title">Септики для низких грунтовых вод</h3>
+                <div class="products-grid">
+                    <!-- Септик Биопорт 1.5 -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/1/d/5/1d51e6400c75cd04d0b2577273bc1b6b/-/resize/600/f.png" alt="Септик Биопорт 1.5">
+                            <img src="https://m-files.cdn1.cc/lpfile/4/7/a/47a6ccb134fc9a95c7bb276598e03c72/-/resize/600/f.png" alt="Септик Биопорт 1.5">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Септик Биопорт 1.5</h4>
+                            <p class="product-description">Рассчитан на 2-3 человека</p>
+                            <div class="product-price">52 900 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic15" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Септик Биопорт 2.5 -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/0/8/8/088d7749ede2bb5be3224b03c080e1f0/-/resize/600/f.png" alt="Септик Биопорт 2.5">
+                            <img src="https://m-files.cdn1.cc/lpfile/1/f/4/1f43b129f011b337d274178f01a91d7e/-/resize/600/f.png" alt="Септик Биопорт 2.5">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Септик Биопорт 2.5</h4>
+                            <p class="product-description">Рассчитан на 4-5 человек</p>
+                            <div class="product-price">69 900 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic25" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Септик Биопорт 3 -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/6/3/8/6383942a1733d29262897bb2bf61ebc5/-/resize/600/f.png" alt="Септик Биопорт 3">
+                            <img src="https://m-files.cdn1.cc/lpfile/2/e/e/2eed1214174301481e3dc899733e4ca2/-/resize/600/f.png" alt="Септик Биопорт 3">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Септик Биопорт 3</h4>
+                            <p class="product-description">Рассчитан на 5-6 человек</p>
+                            <div class="product-price">79 900 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic3" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Септик Биопорт 4 -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/d/2/1/d214a636aff58a47be3c2c04f341c3ab/-/resize/600/f.png" alt="Септик Биопорт 4">
+                            <img src="https://m-files.cdn1.cc/lpfile/d/5/3/d53b55bb8bc64cdffe4b053b76b4ba6a/-/resize/600/f.png" alt="Септик Биопорт 4">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Септик Биопорт 4</h4>
+                            <p class="product-description">Рассчитан на 7-8 человек</p>
+                            <div class="product-price">97 900 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic4" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h3 class="subcategory-title">Септики для высоких грунтовых вод</h3>
+                <div class="products-grid">
+                    <!-- Септик Биопорт 1.5Н -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/c/5/2/c525d7b8e3857a3931e698c54bbcd541/-/resize/600/f.png" alt="Септик Биопорт 1.5Н">
+                            <img src="https://m-files.cdn1.cc/lpfile/e/1/3/e13f07847fbde3b441cc639bfd1972e1/-/resize/600/f.png" alt="Септик Биопорт 1.5Н">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Септик Биопорт 1.5Н</h4>
+                            <p class="product-description">Рассчитан на 2-3 человека</p>
+                            <div class="product-price">59 900 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic15N" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Септик Биопорт 2.5Н -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/6/8/7/6877624327f5860389d5ebd598f6998c/-/resize/600/f.png" alt="Септик Биопорт 2.5Н">
+                            <img src="https://m-files.cdn1.cc/lpfile/3/3/5/3355f22fbdfdc323a500b89512f14a8a/-/resize/600/f.png" alt="Септик Биопорт 2.5Н">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Септик Биопорт 2.5Н</h4>
+                            <p class="product-description">Рассчитан на 4-5 человек</p>
+                            <div class="product-price">77 900 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic25N" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Септик Биопорт 3Н -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/8/6/6/866d956acd56c08fc1760dd41aca03ef/-/resize/600/f.png" alt="Септик Биопорт 3Н">
+                            <img src="https://m-files.cdn1.cc/lpfile/2/4/5/24530fcaec79fd2e920254f893dfaa66/-/resize/600/f.png" alt="Септик Биопорт 3Н">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Септик Биопорт 3Н</h4>
+                            <p class="product-description">Рассчитан на 5-6 человек</p>
+                            <div class="product-price">89 900 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic3N" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Септик Биопорт 4Н -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/a/c/e/acebc66e22234ae81eccf47d2824533e/-/resize/600/f.png" alt="Септик Биопорт 4Н">
+                            <img src="https://m-files.cdn1.cc/lpfile/2/9/8/298c7f83858a06e794146a72889c9cdf/-/resize/600/f.png" alt="Септик Биопорт 4Н">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Септик Биопорт 4Н</h4>
+                            <p class="product-description">Рассчитан на 7-8 человек</p>
+                            <div class="product-price">105 900 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic4N" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h3 class="subcategory-title">Накопительные септики</h3>
+                <div class="products-grid">
+                    <!-- Накопительный септик 2.5 -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/2/6/5/26564a93e21fd23fa5d8b2c12695819c/-/resize/600/f.png" alt="Накопительный септик 2.5">
+                            <img src="https://m-files.cdn1.cc/lpfile/e/8/0/e80a5de0360af34fac38325102b5d7fc/-/resize/600/f.png" alt="Накопительный септик 2.5">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Накопительный септик 2.5</h4>
+                            <p class="product-description">Альтернатива выгребной яме. Требует регулярной откачки.</p>
+                            <div class="product-price">52 900 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/tank/25" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Накопительный септик 1.5 -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/6/0/7/60703625bbc6e667d0fa24c7c710e987/-/resize/600/f.png" alt="Накопительный септик 1.5">
+                            <img src="https://m-files.cdn1.cc/lpfile/8/a/a/8aa1f0d91bee85ac5de6fa93d06753b3/-/resize/600/f.png" alt="Накопительный септик 1.5">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Накопительный септик 1.5</h4>
+                            <p class="product-description">Альтернатива выгребной яме. Требует регулярной откачки.</p>
+                            <div class="product-price">35 900 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/tank/15" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <h3 class="subcategory-title">Септики для дачи</h3>
+                <div class="intro-text">
+                    <p>Сегодня беззаботный отдых на даче невозможен без обустройства системы канализации. Мало кому уже хочется посещать серенький домик на самой границе участка.</p>
+                    <p>Септики для дачи Биопорт выпускаются в двух вариантах на семью из 2х или 4х человек. Септики рассчитаны на периодическое использование и не требуют постоянного ухода, добавления бактерий или сервисного обслуживания. Септики сделаны из сверхпрочного полиэтилена с необходимыми ребрами жесткости, благодаря чему они будут служить вам несколько десятков лет.</p>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- Септик "Дачник 800" -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/6/f/5/6f5ba122d24cc58c7367ec61e6a17741/-/resize/600/f.png" alt="Септик Дачник 800">
+                            <img src="https://m-files.cdn1.cc/lpfile/6/6/b/66b8c39e0fe5f6edb9fc3c5a5757e1bf/-/resize/600/f.png" alt="Септик Дачник 800">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Септик "Дачник 800"</h4>
+                            <p class="product-description">Септик Биопорт "Дачник" предназначен для использования в летний период и рассчитан на четырех постоянных пользователей.</p>
+                            <div class="product-price">33 900 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/septik-dlya-dachi/dachnik800" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Дренажный колодец К1 -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/6/1/8/6189f3c8edfdd07d5d82dcdfa2cef310/-/resize/600/f.jpeg" alt="Дренажный колодец К1">
+                            <img src="https://m-files.cdn1.cc/lpfile/e/1/8/e1885128d267aa1319df0d09fcd59cdd/-/resize/600/f.png" alt="Дренажный колодец К1">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Дренажный колодец К1</h4>
+                            <p class="product-description">Предназначен для отведения ливневых вод и доочистки сточных вод.</p>
+                            <div class="product-price">39 900 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/drenazhnyj-kolodec/drenazhnyj-kolodec1" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Дренажный тоннель -->
+                    <div class="product-card">
+                        <div class="product-images">
+                            <img src="https://m-files.cdn1.cc/lpfile/a/7/5/a75e0e1bb78e2c62bd64e58d18ff5651/-/resize/600/f.png" alt="Дренажный тоннель">
+                            <img src="https://m-files.cdn1.cc/lpfile/4/b/5/4b5ecc49d5259bdfb09d5036fc9eb83a/-/resize/600/f.png" alt="Дренажный тоннель">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">Дренажный тоннель</h4>
+                            <p class="product-description">Необходим для формирования поля поглощения очищенных сточных вод</p>
+                            <div class="product-price">10 700 руб.</div>
+                            <div class="product-actions">
+                                <a href="https://bioport.su/drenazhnyj-kolodec/drenazhnyj-tonnel" class="btn btn-secondary">Подробнее</a>
+                                <a href="#" class="btn btn-primary">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="for-business" style="display: none;">
+            <h2 class="category-title">Для бизнеса</h2>
+            <div class="coming-soon">
+                <p>Раздел находится в разработке. Скоро здесь появятся:</p>
+                <ul>
+                    <li>Очистные для поселка</li>
+                    <li>Канализация для гостиницы</li>
+                    <li>Насосные станции</li>
+                    <li>Колодцы связи</li>
+                    <li>Промышленные емкости</li>
+                    <li>Дорожные блоки</li>
+                    <li>Жироуловитель</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 Биопорт. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Простой скрипт для переключения между категориями
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.nav-tab');
+            const privateHouseSection = document.getElementById('private-house');
+            const businessSection = document.getElementById('for-business');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Убираем активный класс у всех вкладок
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Добавляем активный класс текущей вкладке
+                    this.classList.add('active');
+                    
+                    // Показываем/скрываем соответствующие разделы
+                    if (this.textContent === 'Для частного дома') {
+                        privateHouseSection.style.display = 'block';
+                        businessSection.style.display = 'none';
+                    } else {
+                        privateHouseSection.style.display = 'none';
+                        businessSection.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
