@@ -3,524 +3,941 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог продукции - Биопорт</title>
+    <title>CleanBay | Каталог септиков для Иркутской области и Бурятии</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c7fb8;
-            --secondary-color: #7fcdbb;
-            --accent-color: #edf8b1;
-            --dark-color: #253237;
-            --light-color: #f8f9fa;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --primary: #2A9D8F;
+            --primary-dark: #1D7874;
+            --secondary: #E76F51;
+            --accent: #E9C46A;
+            --dark: #264653;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --border: #E0E0E0;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
-
+        
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
+            font-weight: 400;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
-
+        
+        /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .phone {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            background: rgba(42, 157, 143, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.03"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+        }
+        
+        .hero-content {
+            position: relative;
             color: white;
-            padding: 2rem 0;
-            text-align: center;
-            margin-bottom: 2rem;
-            border-radius: 0 0 10px 10px;
-            box-shadow: var(--shadow);
+            max-width: 800px;
         }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
         }
-
-        .subtitle {
+        
+        .hero p {
             font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
             opacity: 0.9;
         }
-
-        .catalog-nav {
-            background-color: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-        }
-
-        .nav-tabs {
-            display: flex;
-            flex-wrap: wrap;
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
             gap: 10px;
-            margin-bottom: 1rem;
+            background: var(--secondary);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 111, 81, 0.3);
         }
-
-        .nav-tab {
-            padding: 0.5rem 1rem;
-            background-color: var(--light-color);
-            border-radius: 4px;
+        
+        .btn:hover {
+            background: #D45A3C;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 111, 81, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark);
+        }
+        
+        /* Catalog Section */
+        .catalog {
+            padding: 80px 0;
+            background: var(--light);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            letter-spacing: -1px;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Category Navigation */
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--dark);
         }
-
-        .nav-tab:hover {
-            background-color: var(--accent-color);
-        }
-
-        .nav-tab.active {
-            background-color: var(--primary-color);
+        
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--primary);
             color: white;
+            border-color: var(--primary);
         }
-
-        .category-title {
-            font-size: 1.8rem;
-            margin: 2rem 0 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--secondary-color);
-            color: var(--dark-color);
-        }
-
-        .subcategory-title {
-            font-size: 1.4rem;
-            margin: 1.5rem 0 1rem;
-            color: var(--primary-color);
-        }
-
+        
+        /* Products Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
-
+        
         .product-card {
-            background-color: white;
-            border-radius: 8px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            opacity: 1;
+            transform: translateY(0);
         }
-
+        
+        .product-card.hidden {
+            display: none;
+        }
+        
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
-
+        
         .product-images {
+            height: 220px;
             display: flex;
-            height: 200px;
+            position: relative;
         }
-
+        
         .product-images img {
             width: 50%;
             object-fit: cover;
         }
-
-        .product-info {
-            padding: 1.2rem;
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
-
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
         .product-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
-            color: var(--dark-color);
+            color: var(--dark);
         }
-
+        
         .product-description {
-            color: #666;
-            margin-bottom: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-features li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 0.9rem;
         }
-
-        .product-price {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+        
+        .product-features li:last-child {
+            border-bottom: none;
         }
-
+        
+        .product-price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-note {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
         .product-actions {
             display: flex;
             gap: 10px;
         }
-
-        .btn {
-            padding: 0.6rem 1rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            flex: 1;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #1d5f8a;
-        }
-
+        
         .btn-secondary {
-            background-color: var(--light-color);
-            color: var(--dark-color);
+            background: var(--light);
+            color: var(--dark);
+            border: 1px solid var(--border);
+            box-shadow: none;
         }
-
+        
         .btn-secondary:hover {
-            background-color: #e2e6ea;
+            background: #e9ecef;
+            transform: translateY(-2px);
         }
-
-        footer {
+        
+        /* Category Sections */
+        .category-section {
+            margin-bottom: 4rem;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            margin: 2rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            color: var(--dark);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
             text-align: center;
-            margin-top: 3rem;
-            padding: 1.5rem;
-            color: #666;
-            border-top: 1px solid #ddd;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border);
         }
-
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+        }
+        
+        /* Utility Classes */
+        .text-accent { color: var(--accent); }
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
         @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
-            .nav-tabs {
-                flex-direction: column;
-            }
+            .hero h1 { font-size: 2.2rem; }
+            .section-header h2 { font-size: 2rem; }
+            .btn-group { flex-direction: column; }
+            .products-grid { grid-template-columns: 1fr; }
+            nav { display: none; }
+            .category-nav { flex-direction: column; align-items: center; }
+            .product-actions { flex-direction: column; }
+            .hero { min-height: 50vh; margin-top: 70px; }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="container">
-            <h1>Каталог продукции Биопорт</h1>
-            <p class="subtitle">Качественные решения для канализации и водоснабжения</p>
+        <div class="container header-content">
+            <div class="logo">Clean<span>Bay</span></div>
+            <nav>
+                <a href="index.html">Главная</a>
+                <a href="catalog.html" style="color: var(--primary); background: rgba(42, 157, 143, 0.1);">Каталог</a>
+                <a href="faq.html">Вопросы</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+            <div class="phone">+7 (3952) 123-45-67</div>
         </div>
     </header>
 
-    <div class="container">
-        <nav class="catalog-nav">
-            <h2>Категории продукции</h2>
-            <div class="nav-tabs">
-                <div class="nav-tab active">Для частного дома</div>
-                <div class="nav-tab">Для бизнеса</div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Каталог <span class="text-accent">септиков</span> Биопорт</h1>
+                <p>Профессиональные решения для загородной канализации. Подберите идеальный септик для вашего дома в Иркутской области и Бурятии.</p>
+                <div class="btn-group">
+                    <button class="btn" onclick="document.getElementById('catalog-main').scrollIntoView({behavior: 'smooth'})">
+                        📦 Смотреть каталог
+                    </button>
+                    <button class="btn btn-outline" onclick="window.location.href='index.html#quiz'">
+                        🚀 Подобрать септик
+                    </button>
+                </div>
             </div>
-        </nav>
+        </div>
+    </section>
 
-        <section id="private-house">
-            <h2 class="category-title">Для частного дома</h2>
+    <!-- Catalog Section -->
+    <section class="catalog" id="catalog-main">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наши <span class="text-primary">решения</span></h2>
+                <p>Подберем оптимальный септик для вашего дома и участка</p>
+            </div>
+
+            <!-- Category Navigation -->
+            <div class="category-nav">
+                <button class="category-btn active" onclick="filterCategory('all')">Все септики</button>
+                <button class="category-btn" onclick="filterCategory('low-groundwater')">Для низких грунтовых вод</button>
+                <button class="category-btn" onclick="filterCategory('high-groundwater')">Для высоких грунтовых вод</button>
+                <button class="category-btn" onclick="filterCategory('storage')">Накопительные</button>
+                <button class="category-btn" onclick="filterCategory('dacha')">Для дачи</button>
+                <button class="category-btn" onclick="filterCategory('additional')">Дополнительное оборудование</button>
+            </div>
             
+            <!-- Септики для низких грунтовых вод -->
             <div class="category-section">
-                <h3 class="subcategory-title">Септики для низких грунтовых вод</h3>
+                <h3 class="category-title">Для низких грунтовых вод</h3>
                 <div class="products-grid">
                     <!-- Септик Биопорт 1.5 -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="low-groundwater">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/1/d/5/1d51e6400c75cd04d0b2577273bc1b6b/-/resize/600/f.png" alt="Септик Биопорт 1.5">
                             <img src="https://m-files.cdn1.cc/lpfile/4/7/a/47a6ccb134fc9a95c7bb276598e03c72/-/resize/600/f.png" alt="Септик Биопорт 1.5">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Септик Биопорт 1.5</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Септик Биопорт 1.5</h3>
                             <p class="product-description">Рассчитан на 2-3 человека</p>
-                            <div class="product-price">52 900 руб.</div>
+                            <ul class="product-features">
+                                <li>✅ Для низких грунтовых вод</li>
+                                <li>👥 2-3 человека</li>
+                                <li>⚡ Энергонезависимый</li>
+                                <li>🔄 Степень очистки: 98%</li>
+                            </ul>
+                            <div class="product-price">52 900 ₽</div>
+                            <p class="price-note">Базовая комплектация</p>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Септик Биопорт 1.5')">Выбрать</button>
                                 <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic15" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Септик Биопорт 2.5 -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="low-groundwater">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/0/8/8/088d7749ede2bb5be3224b03c080e1f0/-/resize/600/f.png" alt="Септик Биопорт 2.5">
                             <img src="https://m-files.cdn1.cc/lpfile/1/f/4/1f43b129f011b337d274178f01a91d7e/-/resize/600/f.png" alt="Септик Биопорт 2.5">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Септик Биопорт 2.5</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Септик Биопорт 2.5</h3>
                             <p class="product-description">Рассчитан на 4-5 человек</p>
-                            <div class="product-price">69 900 руб.</div>
+                            <ul class="product-features">
+                                <li>✅ Для низких грунтовых вод</li>
+                                <li>👥 4-5 человек</li>
+                                <li>⚡ Энергонезависимый</li>
+                                <li>🔄 Степень очистки: 98%</li>
+                            </ul>
+                            <div class="product-price">69 900 ₽</div>
+                            <p class="price-note">Базовая комплектация</p>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Септик Биопорт 2.5')">Выбрать</button>
                                 <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic25" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Септик Биопорт 3 -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="low-groundwater">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/6/3/8/6383942a1733d29262897bb2bf61ebc5/-/resize/600/f.png" alt="Септик Биопорт 3">
                             <img src="https://m-files.cdn1.cc/lpfile/2/e/e/2eed1214174301481e3dc899733e4ca2/-/resize/600/f.png" alt="Септик Биопорт 3">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Септик Биопорт 3</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Септик Биопорт 3</h3>
                             <p class="product-description">Рассчитан на 5-6 человек</p>
-                            <div class="product-price">79 900 руб.</div>
+                            <ul class="product-features">
+                                <li>✅ Для низких грунтовых вод</li>
+                                <li>👥 5-6 человек</li>
+                                <li>⚡ Энергонезависимый</li>
+                                <li>🔄 Степень очистки: 98%</li>
+                            </ul>
+                            <div class="product-price">79 900 ₽</div>
+                            <p class="price-note">Базовая комплектация</p>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Септик Биопорт 3')">Выбрать</button>
                                 <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic3" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Септик Биопорт 4 -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="low-groundwater">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/d/2/1/d214a636aff58a47be3c2c04f341c3ab/-/resize/600/f.png" alt="Септик Биопорт 4">
                             <img src="https://m-files.cdn1.cc/lpfile/d/5/3/d53b55bb8bc64cdffe4b053b76b4ba6a/-/resize/600/f.png" alt="Септик Биопорт 4">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Септик Биопорт 4</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Септик Биопорт 4</h3>
                             <p class="product-description">Рассчитан на 7-8 человек</p>
-                            <div class="product-price">97 900 руб.</div>
+                            <ul class="product-features">
+                                <li>✅ Для низких грунтовых вод</li>
+                                <li>👥 7-8 человек</li>
+                                <li>⚡ Энергонезависимый</li>
+                                <li>🔄 Степень очистки: 98%</li>
+                            </ul>
+                            <div class="product-price">97 900 ₽</div>
+                            <p class="price-note">Базовая комплектация</p>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Септик Биопорт 4')">Выбрать</button>
                                 <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic4" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Септики для высоких грунтовых вод -->
             <div class="category-section">
-                <h3 class="subcategory-title">Септики для высоких грунтовых вод</h3>
+                <h3 class="category-title">Для высоких грунтовых вод</h3>
                 <div class="products-grid">
                     <!-- Септик Биопорт 1.5Н -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="high-groundwater">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/c/5/2/c525d7b8e3857a3931e698c54bbcd541/-/resize/600/f.png" alt="Септик Биопорт 1.5Н">
                             <img src="https://m-files.cdn1.cc/lpfile/e/1/3/e13f07847fbde3b441cc639bfd1972e1/-/resize/600/f.png" alt="Септик Биопорт 1.5Н">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Септик Биопорт 1.5Н</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Септик Биопорт 1.5Н</h3>
                             <p class="product-description">Рассчитан на 2-3 человека</p>
-                            <div class="product-price">59 900 руб.</div>
+                            <ul class="product-features">
+                                <li>🌊 Для высоких грунтовых вод</li>
+                                <li>👥 2-3 человека</li>
+                                <li>⚡ Энергонезависимый</li>
+                                <li>🔄 Степень очистки: 98%</li>
+                            </ul>
+                            <div class="product-price">59 900 ₽</div>
+                            <p class="price-note">С защитой от всплытия</p>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Септик Биопорт 1.5Н')">Выбрать</button>
                                 <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic15N" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Септик Биопорт 2.5Н -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="high-groundwater">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/6/8/7/6877624327f5860389d5ebd598f6998c/-/resize/600/f.png" alt="Септик Биопорт 2.5Н">
                             <img src="https://m-files.cdn1.cc/lpfile/3/3/5/3355f22fbdfdc323a500b89512f14a8a/-/resize/600/f.png" alt="Септик Биопорт 2.5Н">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Септик Биопорт 2.5Н</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Септик Биопорт 2.5Н</h3>
                             <p class="product-description">Рассчитан на 4-5 человек</p>
-                            <div class="product-price">77 900 руб.</div>
+                            <ul class="product-features">
+                                <li>🌊 Для высоких грунтовых вод</li>
+                                <li>👥 4-5 человек</li>
+                                <li>⚡ Энергонезависимый</li>
+                                <li>🔄 Степень очистки: 98%</li>
+                            </ul>
+                            <div class="product-price">77 900 ₽</div>
+                            <p class="price-note">С защитой от всплытия</p>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Септик Биопорт 2.5Н')">Выбрать</button>
                                 <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic25N" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Септик Биопорт 3Н -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="high-groundwater">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/8/6/6/866d956acd56c08fc1760dd41aca03ef/-/resize/600/f.png" alt="Септик Биопорт 3Н">
                             <img src="https://m-files.cdn1.cc/lpfile/2/4/5/24530fcaec79fd2e920254f893dfaa66/-/resize/600/f.png" alt="Септик Биопорт 3Н">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Септик Биопорт 3Н</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Септик Биопорт 3Н</h3>
                             <p class="product-description">Рассчитан на 5-6 человек</p>
-                            <div class="product-price">89 900 руб.</div>
+                            <ul class="product-features">
+                                <li>🌊 Для высоких грунтовых вод</li>
+                                <li>👥 5-6 человек</li>
+                                <li>⚡ Энергонезависимый</li>
+                                <li>🔄 Степень очистки: 98%</li>
+                            </ul>
+                            <div class="product-price">89 900 ₽</div>
+                            <p class="price-note">С защитой от всплытия</p>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Септик Биопорт 3Н')">Выбрать</button>
                                 <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic3N" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Септик Биопорт 4Н -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="high-groundwater">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/a/c/e/acebc66e22234ae81eccf47d2824533e/-/resize/600/f.png" alt="Септик Биопорт 4Н">
                             <img src="https://m-files.cdn1.cc/lpfile/2/9/8/298c7f83858a06e794146a72889c9cdf/-/resize/600/f.png" alt="Септик Биопорт 4Н">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Септик Биопорт 4Н</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Септик Биопорт 4Н</h3>
                             <p class="product-description">Рассчитан на 7-8 человек</p>
-                            <div class="product-price">105 900 руб.</div>
+                            <ul class="product-features">
+                                <li>🌊 Для высоких грунтовых вод</li>
+                                <li>👥 7-8 человек</li>
+                                <li>⚡ Энергонезависимый</li>
+                                <li>🔄 Степень очистки: 98%</li>
+                            </ul>
+                            <div class="product-price">105 900 ₽</div>
+                            <p class="price-note">С защитой от всплытия</p>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Септик Биопорт 4Н')">Выбрать</button>
                                 <a href="https://bioport.su/septik-dlya-chastnogo-doma/septic4N" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Накопительные септики -->
             <div class="category-section">
-                <h3 class="subcategory-title">Накопительные септики</h3>
+                <h3 class="category-title">Накопительные септики</h3>
                 <div class="products-grid">
                     <!-- Накопительный септик 2.5 -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="storage">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/2/6/5/26564a93e21fd23fa5d8b2c12695819c/-/resize/600/f.png" alt="Накопительный септик 2.5">
                             <img src="https://m-files.cdn1.cc/lpfile/e/8/0/e80a5de0360af34fac38325102b5d7fc/-/resize/600/f.png" alt="Накопительный септик 2.5">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Накопительный септик 2.5</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Накопительный септик 2.5</h3>
                             <p class="product-description">Альтернатива выгребной яме. Требует регулярной откачки.</p>
-                            <div class="product-price">52 900 руб.</div>
+                            <ul class="product-features">
+                                <li>📦 Накопительный</li>
+                                <li>👥 Для 4-5 человек</li>
+                                <li>🔄 Требует откачки</li>
+                                <li>💰 Экономичный вариант</li>
+                            </ul>
+                            <div class="product-price">52 900 ₽</div>
+                            <p class="price-note">Объем 2500 литров</p>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Накопительный септик 2.5')">Выбрать</button>
                                 <a href="https://bioport.su/tank/25" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Накопительный септик 1.5 -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="storage">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/6/0/7/60703625bbc6e667d0fa24c7c710e987/-/resize/600/f.png" alt="Накопительный септик 1.5">
                             <img src="https://m-files.cdn1.cc/lpfile/8/a/a/8aa1f0d91bee85ac5de6fa93d06753b3/-/resize/600/f.png" alt="Накопительный септик 1.5">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Накопительный септик 1.5</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Накопительный септик 1.5</h3>
                             <p class="product-description">Альтернатива выгребной яме. Требует регулярной откачки.</p>
-                            <div class="product-price">35 900 руб.</div>
+                            <ul class="product-features">
+                                <li>📦 Накопительный</li>
+                                <li>👥 Для 2-3 человек</li>
+                                <li>🔄 Требует откачки</li>
+                                <li>💰 Экономичный вариант</li>
+                            </ul>
+                            <div class="product-price">35 900 ₽</div>
+                            <p class="price-note">Объем 1500 литров</p>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Накопительный септик 1.5')">Выбрать</button>
                                 <a href="https://bioport.su/tank/15" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Септики для дачи -->
             <div class="category-section">
-                <h3 class="subcategory-title">Септики для дачи</h3>
-                <div class="intro-text">
+                <h3 class="category-title">Септики для дачи</h3>
+                <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
                     <p>Сегодня беззаботный отдых на даче невозможен без обустройства системы канализации. Мало кому уже хочется посещать серенький домик на самой границе участка.</p>
-                    <p>Септики для дачи Биопорт выпускаются в двух вариантах на семью из 2х или 4х человек. Септики рассчитаны на периодическое использование и не требуют постоянного ухода, добавления бактерий или сервисного обслуживания. Септики сделаны из сверхпрочного полиэтилена с необходимыми ребрами жесткости, благодаря чему они будут служить вам несколько десятков лет.</p>
+                    <p style="margin-top: 1rem;">Септики для дачи Биопорт выпускаются в двух вариантах на семью из 2х или 4х человек. Септики рассчитаны на периодическое использование и не требуют постоянного ухода, добавления бактерий или сервисного обслуживания. Септики сделаны из сверхпрочного полиэтилена с необходимыми ребрами жесткости, благодаря чему они будут служить вам несколько десятков лет.</p>
                 </div>
                 
                 <div class="products-grid">
                     <!-- Септик "Дачник 800" -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="dacha">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/6/f/5/6f5ba122d24cc58c7367ec61e6a17741/-/resize/600/f.png" alt="Септик Дачник 800">
                             <img src="https://m-files.cdn1.cc/lpfile/6/6/b/66b8c39e0fe5f6edb9fc3c5a5757e1bf/-/resize/600/f.png" alt="Септик Дачник 800">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Септик "Дачник 800"</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Септик "Дачник 800"</h3>
                             <p class="product-description">Септик Биопорт "Дачник" предназначен для использования в летний период и рассчитан на четырех постоянных пользователей.</p>
-                            <div class="product-price">33 900 руб.</div>
+                            <ul class="product-features">
+                                <li>🏡 Для дачи</li>
+                                <li>👥 До 4 человек</li>
+                                <li>⚡ Энергонезависимый</li>
+                                <li>🌿 Экологичный</li>
+                            </ul>
+                            <div class="product-price">33 900 ₽</div>
+                            <p class="price-note">Идеально для сезонного использования</p>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Септик Дачник 800')">Выбрать</button>
                                 <a href="https://bioport.su/septik-dlya-dachi/dachnik800" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
+            <!-- Дополнительное оборудование -->
+            <div class="category-section">
+                <h3 class="category-title">Дополнительное оборудование</h3>
+                <div class="products-grid">
                     <!-- Дренажный колодец К1 -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="additional">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/6/1/8/6189f3c8edfdd07d5d82dcdfa2cef310/-/resize/600/f.jpeg" alt="Дренажный колодец К1">
                             <img src="https://m-files.cdn1.cc/lpfile/e/1/8/e1885128d267aa1319df0d09fcd59cdd/-/resize/600/f.png" alt="Дренажный колодец К1">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Дренажный колодец К1</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Дренажный колодец К1</h3>
                             <p class="product-description">Предназначен для отведения ливневых вод и доочистки сточных вод.</p>
-                            <div class="product-price">39 900 руб.</div>
+                            <ul class="product-features">
+                                <li>✅ Для доочистки вод</li>
+                                <li>🌊 Ливневые стоки</li>
+                                <li>⚡ Простая установка</li>
+                                <li>🔄 Долговечный</li>
+                            </ul>
+                            <div class="product-price">39 900 ₽</div>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Дренажный колодец К1')">Выбрать</button>
                                 <a href="https://bioport.su/drenazhnyj-kolodec/drenazhnyj-kolodec1" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Дренажный тоннель -->
-                    <div class="product-card">
+                    <div class="product-card" data-category="additional">
                         <div class="product-images">
                             <img src="https://m-files.cdn1.cc/lpfile/a/7/5/a75e0e1bb78e2c62bd64e58d18ff5651/-/resize/600/f.png" alt="Дренажный тоннель">
                             <img src="https://m-files.cdn1.cc/lpfile/4/b/5/4b5ecc49d5259bdfb09d5036fc9eb83a/-/resize/600/f.png" alt="Дренажный тоннель">
                         </div>
-                        <div class="product-info">
-                            <h4 class="product-title">Дренажный тоннель</h4>
+                        <div class="product-content">
+                            <h3 class="product-title">Дренажный тоннель</h3>
                             <p class="product-description">Необходим для формирования поля поглощения очищенных сточных вод</p>
-                            <div class="product-price">10 700 руб.</div>
+                            <ul class="product-features">
+                                <li>✅ Для очищенных вод</li>
+                                <li>🌿 Экологичный</li>
+                                <li>⚡ Высокая эффективность</li>
+                                <li>🔄 Прочный</li>
+                            </ul>
+                            <div class="product-price">10 700 ₽</div>
                             <div class="product-actions">
+                                <button class="btn" onclick="selectProduct('Дренажный тоннель')">Выбрать</button>
                                 <a href="https://bioport.su/drenazhnyj-kolodec/drenazhnyj-tonnel" class="btn btn-secondary">Подробнее</a>
-                                <a href="#" class="btn btn-primary">В корзину</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="for-business" style="display: none;">
-            <h2 class="category-title">Для бизнеса</h2>
-            <div class="coming-soon">
-                <p>Раздел находится в разработке. Скоро здесь появятся:</p>
-                <ul>
-                    <li>Очистные для поселка</li>
-                    <li>Канализация для гостиницы</li>
-                    <li>Насосные станции</li>
-                    <li>Колодцы связи</li>
-                    <li>Промышленные емкости</li>
-                    <li>Дорожные блоки</li>
-                    <li>Жироуловитель</li>
-                </ul>
-            </div>
-        </section>
-    </div>
-
-    <footer>
+    <!-- Features Section -->
+    <section class="features">
         <div class="container">
-            <p>© 2023 Биопорт. Все права защищены.</p>
+            <div class="section-header">
+                <h2>Почему выбирают <span class="text-primary">CleanBay</span></h2>
+                <p>Мы обеспечиваем надежность и комфорт для вашего дома</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Быстрая доставка</h3>
+                    <p>Доставим оборудование в любую точку Иркутской области и Бурятии за 1-2 дня</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Монтаж за 1 день</h3>
+                    <p>Профессиональная установка под ключ всего за один рабочий день</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Гарантия 5 лет</h3>
+                    <p>Расширенная гарантия на оборудование и монтажные работы</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Для Сибирского региона</h3>
+                    <p>Учитываем особенности грунтов и климата Иркутской области и Бурятии</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CleanBay</h3>
+                    <p>Септики для Иркутской области и Республики Бурятия. Надежные решения для вашего комфорта.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>📞 +7 (3952) 123-45-67</p>
+                    <p>📧 info@cleanbay.ru</p>
+                    <p>📍 Иркутская область и Бурятия</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Режим работы</h3>
+                    <p>Пн-Пт: 9:00 - 18:00</p>
+                    <p>Сб: 10:00 - 16:00</p>
+                    <p>Вс: выходной</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 CleanBay. Все права защищены. | <a href="faq.html" style="color: var(--primary);">Частые вопросы</a></p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Простой скрипт для переключения между категориями
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.nav-tab');
-            const privateHouseSection = document.getElementById('private-house');
-            const businessSection = document.getElementById('for-business');
+        // Функция фильтрации по категориям
+        function filterCategory(category) {
+            const products = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.category-btn');
             
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Убираем активный класс у всех вкладок
-                    tabs.forEach(t => t.classList.remove('active'));
-                    
-                    // Добавляем активный класс текущей вкладке
-                    this.classList.add('active');
-                    
-                    // Показываем/скрываем соответствующие разделы
-                    if (this.textContent === 'Для частного дома') {
-                        privateHouseSection.style.display = 'block';
-                        businessSection.style.display = 'none';
-                    } else {
-                        privateHouseSection.style.display = 'none';
-                        businessSection.style.display = 'block';
-                    }
-                });
+            // Обновляем активную кнопку
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Показываем/скрываем продукты
+            products.forEach(product => {
+                if (category === 'all' || product.dataset.category === category) {
+                    product.classList.remove('hidden');
+                } else {
+                    product.classList.add('hidden');
+                }
             });
+            
+            // Прокручиваем к началу каталога
+            document.getElementById('catalog-main').scrollIntoView({behavior: 'smooth'});
+        }
+        
+        // Функция выбора продукта
+        function selectProduct(productName) {
+            // Сохраняем выбранный продукт
+            localStorage.setItem('selectedProduct', productName);
+            
+            // Перенаправляем на главную страницу с квизом
+            window.location.href = 'index.html#quiz';
+        }
+        
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Проверяем, есть ли выбранный продукт в localStorage
+            const selectedProduct = localStorage.getItem('selectedProduct');
+            if (selectedProduct) {
+                console.log('Выбранный продукт:', selectedProduct);
+                // Можно добавить логику для предзаполнения квиза
+            }
         });
     </script>
 </body>
