@@ -1136,11 +1136,30 @@
 }
 
 async function sendToTelegram(message) {
+    try {
+        // Сначала пробуем через proxy (для будущего хостинга)
+        const proxyResponse = await fetch('/telegram-proxy.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                message: message
+            })
+        });
+        
+        if (proxyResponse.ok) {
+            return await proxyResponse.json();
+        }
+    } catch (proxyError) {
+        console.log('Proxy failed, using direct API');
+    }
+    
+    // Если proxy не сработал - используем прямой API (для GitHub Pages)
     const botToken = '8424607717:AAFeEtntxljg5H9WT7dRBIMQpMP21uJdaHY';
     const chatId = '1660672569';
     
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-    
     const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -1156,6 +1175,8 @@ async function sendToTelegram(message) {
     if (!response.ok) {
         throw new Error('Ошибка отправки в Telegram');
     }
+    
+    return await response.json();
 }
 
 function resetForm() {
