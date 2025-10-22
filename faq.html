@@ -29,6 +29,7 @@
             color: var(--dark);
             line-height: 1.6;
             font-weight: 400;
+            padding-top: 80px;
         }
         
         .container {
@@ -39,7 +40,7 @@
         
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             padding: 1rem 0;
             position: fixed;
@@ -47,16 +48,18 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--border);
+            height: 80px;
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 100%;
         }
         
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
             letter-spacing: -0.5px;
@@ -66,16 +69,57 @@
             color: var(--secondary);
         }
         
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
         .phone {
             font-weight: 600;
             color: var(--dark);
-            font-size: 1.1rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .cart-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary);
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .cart-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .cart-count {
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
         }
 
         /* Navigation */
         nav {
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
         }
 
         nav a {
@@ -83,8 +127,9 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 6px;
+            font-size: 0.9rem;
         }
 
         nav a:hover {
@@ -92,29 +137,73 @@
             background: rgba(42, 157, 143, 0.1);
         }
 
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            padding: 0.5rem;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 1rem 0;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 1rem 2rem;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(42, 157, 143, 0.1);
+            color: var(--primary);
+        }
+
         /* FAQ Page Styles */
         .faq-hero {
             background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: 140px 0 80px;
+            padding: 100px 0 60px;
             text-align: center;
+            margin-bottom: 60px;
         }
 
         .faq-hero h1 {
             font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
         }
 
         .faq-hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
+            font-weight: 300;
         }
 
         .faq-content {
-            padding: 80px 0;
+            padding: 40px 0 80px;
             background: white;
         }
 
@@ -143,6 +232,7 @@
             padding: 2rem;
             border-left: 4px solid var(--primary);
             transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
         .faq-item:hover {
@@ -162,6 +252,7 @@
         .faq-answer {
             color: var(--gray);
             line-height: 1.7;
+            font-size: 1rem;
         }
 
         .contact-promo {
@@ -174,26 +265,34 @@
         }
 
         .contact-promo h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 1rem;
+        }
+
+        .contact-promo p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             background: var(--secondary);
             color: white;
-            padding: 18px 35px;
+            padding: 16px 30px;
             border: none;
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(231, 111, 81, 0.3);
-            margin-top: 1.5rem;
+            text-align: center;
+            min-width: 200px;
         }
         
         .btn:hover {
@@ -226,13 +325,164 @@
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--gray);
+            font-size: 0.9rem;
         }
 
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .legal-info {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-top: 1rem;
+            line-height: 1.4;
+        }
+
+        /* Медиа-запросы для мобильных устройств */
         @media (max-width: 768px) {
-            .faq-hero h1 { font-size: 2.2rem; }
-            .faq-hero { padding: 120px 0 60px; }
-            nav { display: none; }
-            .faq-item { padding: 1.5rem; }
+            body {
+                padding-top: 70px;
+            }
+            
+            header {
+                height: 70px;
+                padding: 0.8rem 0;
+            }
+            
+            .faq-hero {
+                padding: 80px 0 40px;
+                margin-bottom: 40px;
+            }
+            
+            .faq-hero h1 { 
+                font-size: 2.2rem; 
+                margin-bottom: 1rem;
+            }
+            
+            .faq-hero p { 
+                font-size: 1.1rem; 
+            }
+            
+            .faq-content {
+                padding: 20px 0 60px;
+            }
+            
+            .faq-category h2 {
+                font-size: 1.8rem;
+            }
+            
+            .faq-item {
+                padding: 1.5rem;
+            }
+            
+            .faq-question {
+                font-size: 1.1rem;
+            }
+            
+            .faq-answer {
+                font-size: 0.95rem;
+            }
+            
+            .contact-promo {
+                padding: 40px 20px;
+                margin: 3rem 0;
+                border-radius: 15px;
+            }
+            
+            .contact-promo h3 {
+                font-size: 1.8rem;
+            }
+            
+            .contact-promo p {
+                font-size: 1.1rem;
+            }
+            
+            /* Скрываем обычную навигацию на мобильных */
+            nav { 
+                display: none; 
+            }
+            
+            /* Показываем кнопку меню на мобильных */
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-right { 
+                gap: 0.8rem; 
+            }
+            
+            .phone { 
+                font-size: 0.85rem; 
+            }
+            
+            .cart-btn span { 
+                display: none; 
+            }
+            
+            .cart-btn { 
+                padding: 8px 10px; 
+            }
+            
+            .footer-links { 
+                flex-direction: column; 
+                gap: 1rem; 
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .faq-hero h1 { 
+                font-size: 1.8rem; 
+            }
+            
+            .faq-hero p { 
+                font-size: 1rem; 
+            }
+            
+            .faq-category h2 {
+                font-size: 1.6rem;
+            }
+            
+            .faq-item {
+                padding: 1.2rem;
+            }
+            
+            .contact-promo h3 {
+                font-size: 1.6rem;
+            }
+            
+            .contact-promo p {
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .phone {
+                font-size: 0.8rem;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -241,13 +491,32 @@
     <header>
         <div class="container header-content">
             <div class="logo">Clean<span>Bay</span></div>
+            
+            <!-- Обычная навигация для десктопа -->
             <nav>
                 <a href="index.html">Главная</a>
-                <a href="faq.html">Вопросы</a>
-                <a href="index.html#catalog">Каталог</a>
+                <a href="faq.html" style="color: var(--primary); background: rgba(42, 157, 143, 0.1);">Вопросы</a>
+                <a href="catalog.html">Каталог</a>
                 <a href="index.html#quiz">Расчет</a>
             </nav>
-            <div class="phone">+7 (3952) 123-45-67</div>
+            
+            <div class="header-right">
+                <div class="phone">+7 (933) 190-19-82</div>
+                <a href="cart.html" class="cart-btn">
+                    🛒 <span>Корзина</span>
+                    <div class="cart-count" id="cartCount">0</div>
+                </a>
+                <!-- Кнопка мобильного меню -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            </div>
+        </div>
+        
+        <!-- Мобильная навигация -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="index.html" onclick="toggleMobileMenu()">Главная</a>
+            <a href="faq.html" onclick="toggleMobileMenu()" style="color: var(--primary); background: rgba(42, 157, 143, 0.1);">Вопросы</a>
+            <a href="catalog.html" onclick="toggleMobileMenu()">Каталог</a>
+            <a href="index.html#quiz" onclick="toggleMobileMenu()">Расчет</a>
         </div>
     </header>
 
@@ -421,13 +690,13 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>CleanBay</h3>
-                    <p>Септики для Иркутской области. Надежные решения для вашего комфорта.</p>
+                    <p>Септики для Иркутской области и Республики Бурятия. Надежные решения для вашего комфорта.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Контакты</h3>
-                    <p>📞 +7 (3952) 123-45-67</p>
+                    <p>📞 +7 (933) 190-19-82</p>
                     <p>📧 info@cleanbay.ru</p>
-                    <p>📍 Иркутская область</p>
+                    <p>📍 Иркутская обл. пос.Молодёжный 1/1А</p>
                 </div>
                 <div class="footer-section">
                     <h3>Режим работы</h3>
@@ -436,10 +705,55 @@
                     <p>Вс: выходной</p>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>© 2024 CleanBay. Все права защищены. | <a href="index.html" style="color: var(--primary);">Вернуться на главную</a></p>
+                <div class="footer-links">
+                    <a href="#">Соглашение об обработке персональных данных</a>
+                    <a href="#">Политика конфиденциальности</a>
+                </div>
+                
+                <p>ИП Осипов Андрей Сергеевич | ИНН: 380117126847</p>
+                
+                <div class="legal-info">
+                    Сайт носит информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи 437(2) ГК РФ.
+                </div>
+                
+                <p style="margin-top: 1rem;">© 2024 CleanBay. Все права защищены.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Функция для мобильного меню
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        // Закрытие мобильного меню при клике вне его
+        document.addEventListener('click', function(event) {
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (mobileNav.classList.contains('active') && 
+                !mobileNav.contains(event.target) && 
+                !mobileMenuBtn.contains(event.target)) {
+                mobileNav.classList.remove('active');
+            }
+        });
+
+        // Корзина
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+        
+        // Инициализация корзины при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+        });
+    </script>
 </body>
 </html>
