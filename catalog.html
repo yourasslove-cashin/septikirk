@@ -498,23 +498,36 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+       <!-- Header -->
     <header>
         <div class="container header-content">
             <div class="logo">Clean<span>Bay</span></div>
+            
+            <!-- Обычная навигация для десктопа -->
             <nav>
                 <a href="index.html">Главная</a>
                 <a href="catalog.html" style="color: var(--primary); background: rgba(42, 157, 143, 0.1);">Каталог</a>
                 <a href="faq.html">Вопросы</a>
-                <a href="#contact">Контакты</a>
+                <a href="index.html#quiz">Расчет</a>
             </nav>
+            
             <div class="header-right">
                 <div class="phone">+7 (933) 190-19-82</div>
                 <a href="cart.html" class="cart-btn">
                     🛒 <span>Корзина</span>
                     <div class="cart-count" id="cartCount">0</div>
                 </a>
+                <!-- Кнопка мобильного меню -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
             </div>
+        </div>
+        
+        <!-- Мобильная навигация -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="index.html" onclick="toggleMobileMenu()">Главная</a>
+            <a href="catalog.html" onclick="toggleMobileMenu()" style="color: var(--primary); background: rgba(42, 157, 143, 0.1);">Каталог</a>
+            <a href="faq.html" onclick="toggleMobileMenu()">Вопросы</a>
+            <a href="index.html#quiz" onclick="toggleMobileMenu()">Расчет</a>
         </div>
     </header>
 
