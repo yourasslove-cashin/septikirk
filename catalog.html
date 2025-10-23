@@ -29,6 +29,7 @@
             color: var(--dark);
             line-height: 1.6;
             font-weight: 400;
+            padding-top: 80px; /* Добавляем отступ для фиксированной шапки */
         }
         
         .container {
@@ -39,7 +40,7 @@
         
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             padding: 1rem 0;
             position: fixed;
@@ -47,16 +48,18 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--border);
+            height: 80px; /* Фиксированная высота шапки */
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 100%;
         }
         
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
             letter-spacing: -0.5px;
@@ -69,28 +72,30 @@
         .header-right {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1rem;
         }
 
         .phone {
             font-weight: 600;
             color: var(--dark);
-            font-size: 1.1rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
 
         .cart-btn {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: var(--primary);
             color: white;
-            padding: 10px 20px;
+            padding: 8px 12px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
+            font-size: 0.9rem;
         }
 
         .cart-btn:hover {
@@ -102,19 +107,19 @@
             background: var(--secondary);
             color: white;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 600;
         }
 
         /* Navigation */
         nav {
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
         }
 
         nav a {
@@ -122,24 +127,66 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 6px;
+            font-size: 0.9rem;
         }
 
         nav a:hover {
             color: var(--primary);
             background: rgba(42, 157, 143, 0.1);
         }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            padding: 0.5rem;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+            padding: 1rem 0;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 1rem 2rem;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(42, 157, 143, 0.1);
+            color: var(--primary);
+        }
         
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%);
-            min-height: 60vh;
+            min-height: 40vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            margin-top: 80px;
+            margin-top: 0;
         }
         
         .hero::before {
@@ -159,15 +206,15 @@
         }
         
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             line-height: 1.1;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             letter-spacing: -1px;
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
             font-weight: 300;
             opacity: 0.9;
@@ -176,10 +223,11 @@
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             background: var(--secondary);
             color: white;
-            padding: 15px 30px;
+            padding: 16px 30px;
             border: none;
             border-radius: 8px;
             font-size: 1rem;
@@ -188,6 +236,10 @@
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(231, 111, 81, 0.3);
+            text-align: center;
+            min-width: 200px;
+            flex: 1;
+            max-width: 280px;
         }
         
         .btn:hover {
@@ -207,6 +259,14 @@
             color: var(--dark);
         }
         
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
         /* Catalog Section */
         .catalog {
             padding: 80px 0;
@@ -219,7 +279,7 @@
         }
         
         .section-header h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--dark);
@@ -243,7 +303,7 @@
         }
         
         .main-category-btn {
-            padding: 15px 30px;
+            padding: 12px 24px;
             background: white;
             border: 2px solid var(--border);
             border-radius: 8px;
@@ -251,7 +311,7 @@
             transition: all 0.3s ease;
             font-weight: 600;
             color: var(--dark);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         .main-category-btn.active,
@@ -265,13 +325,15 @@
         .sub-category-nav {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 0.8rem;
             margin-bottom: 3rem;
             flex-wrap: wrap;
+            overflow-x: auto;
+            padding-bottom: 10px;
         }
         
         .sub-category-btn {
-            padding: 12px 24px;
+            padding: 10px 18px;
             background: white;
             border: 2px solid var(--border);
             border-radius: 8px;
@@ -279,6 +341,8 @@
             transition: all 0.3s ease;
             font-weight: 500;
             color: var(--dark);
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
         
         .sub-category-btn.active,
@@ -291,8 +355,8 @@
         /* Products Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
             margin-bottom: 3rem;
         }
         
@@ -316,33 +380,33 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
         
-    .product-image {
-    height: 220px;
-    display: flex;
-    position: relative;
-    overflow: hidden;
-    background: var(--light);
-    align-items: center;
-    justify-content: center;
-}
+        .product-image {
+            height: 200px;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+            background: var(--light);
+            align-items: center;
+            justify-content: center;
+        }
 
-.product-image img {
-    width: auto;
-    height: 100%;
-    object-fit: contain;
-    max-width: 100%;
-    padding: 10px;
-}
+        .product-image img {
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+            max-width: 100%;
+            padding: 10px;
+        }
         
         .product-badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 12px;
+            right: 12px;
             background: var(--secondary);
             color: white;
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 600;
         }
         
@@ -351,7 +415,7 @@
         }
         
         .product-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--dark);
@@ -360,7 +424,7 @@
         .product-description {
             color: var(--gray);
             margin-bottom: 1rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
         
         .product-features {
@@ -373,7 +437,7 @@
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             font-size: 0.9rem;
         }
         
@@ -382,14 +446,14 @@
         }
         
         .product-price {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--secondary);
             margin-bottom: 0.5rem;
         }
         
         .price-note {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--gray);
             margin-bottom: 1.5rem;
         }
@@ -400,7 +464,7 @@
         }
         
         .category-title {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin: 2rem 0 1.5rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--primary);
@@ -415,13 +479,13 @@
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
         
         .feature-card {
             background: var(--light);
-            padding: 2.5rem 2rem;
+            padding: 2rem 1.5rem;
             border-radius: 12px;
             text-align: center;
             transition: transform 0.3s ease;
@@ -433,13 +497,13 @@
         }
         
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 1rem;
             color: var(--primary);
         }
         
         .feature-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 1rem;
             color: var(--dark);
@@ -449,26 +513,52 @@
         footer {
             background: var(--dark);
             color: white;
-            padding: 3rem 0 2rem;
+            padding: 3rem 0 1.5rem;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
         
         .footer-section h3 {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--primary);
         }
         
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .legal-info {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-top: 1rem;
+            line-height: 1.4;
         }
         
         /* Utility Classes */
@@ -476,29 +566,141 @@
         .text-primary { color: var(--primary); }
         .text-secondary { color: var(--secondary); }
         
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
+        /* Медиа-запросы для мобильных устройств */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .section-header h2 { font-size: 2rem; }
-            .btn-group { flex-direction: column; }
-            .products-grid { grid-template-columns: 1fr; }
-            nav { display: none; }
-            .main-category-nav, .sub-category-nav { flex-direction: column; align-items: center; }
-            .hero { min-height: 50vh; margin-top: 70px; }
-            .header-right { gap: 1rem; }
-            .phone { font-size: 1rem; }
-            .cart-btn span { display: none; }
-            .cart-btn { padding: 10px 15px; }
+            body {
+                padding-top: 70px; /* Уменьшаем отступ для мобильных */
+            }
+            
+            header {
+                height: 70px;
+                padding: 0.8rem 0;
+            }
+            
+            .hero {
+                min-height: 30vh;
+            }
+            
+            .hero h1 { 
+                font-size: 2rem; 
+                margin-bottom: 1rem;
+            }
+            
+            .hero p { 
+                font-size: 1rem; 
+                margin-bottom: 1.5rem;
+            }
+            
+            .section-header h2 { 
+                font-size: 1.8rem; 
+            }
+            
+            .btn-group { 
+                flex-direction: column; 
+                gap: 1rem;
+                width: 100%;
+            }
+            
+            .btn {
+                padding: 14px 25px;
+                font-size: 0.95rem;
+                min-width: 100%; /* На мобильных кнопки занимают всю ширину */
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            /* Скрываем обычную навигацию на мобильных */
+            nav { 
+                display: none; 
+            }
+            
+            /* Показываем кнопку меню на мобильных */
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-right { 
+                gap: 0.8rem; 
+            }
+            
+            .phone { 
+                font-size: 0.85rem; 
+            }
+            
+            .cart-btn span { 
+                display: none; 
+            }
+            
+            .cart-btn { 
+                padding: 8px 10px; 
+            }
+            
+            .footer-links { 
+                flex-direction: column; 
+                gap: 0.8rem; 
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .product-card {
+                margin-bottom: 1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-category-nav, .sub-category-nav { 
+                flex-direction: column; 
+                align-items: center; 
+            }
+            
+            .main-category-btn, .sub-category-btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .sub-category-nav {
+                overflow-x: visible;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { 
+                font-size: 1.8rem; 
+            }
+            
+            .hero p { 
+                font-size: 0.95rem; 
+            }
+            
+            .section-header h2 { 
+                font-size: 1.6rem; 
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .phone {
+                font-size: 0.8rem;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
-       <!-- Header -->
+    <!-- Header -->
     <header>
         <div class="container header-content">
             <div class="logo">Clean<span>Bay</span></div>
@@ -760,36 +962,36 @@
                             </div>
                             <div class="product-content">
                                 <h3 class="product-title">Накопительный септик 2.5</h3>
-                                <p class="product-description">Альтернатива выгребной яме. Требует регулярной откачки.</p>
+                                <p class="product-description">Объем 2500 литров</p>
                                 <ul class="product-features">
-                                    <li>📦 Накопительный</li>
-                                    <li>👥 Для 4-5 человек</li>
-                                    <li>🔄 Требует откачки</li>
-                                    <li>💰 Экономичный вариант</li>
+                                    <li>💧 Накопительная емкость</li>
+                                    <li>📏 Объем: 2500 л</li>
+                                    <li>⚡ Энергонезависимый</li>
+                                    <li>🔄 Для периодического использования</li>
                                 </ul>
                                 <div class="product-price">52 900 ₽</div>
-                                <p class="price-note">Объем 2500 литров</p>
+                                <p class="price-note">Идеально для дачи</p>
                                 <button class="btn" onclick="addToCart('Накопительный септик 2.5', 52900)">Выбрать</button>
                             </div>
                         </div>
 
-                        <!-- Накопительный септик 1.5 -->
-                        <div class="product-card" data-price="35900">
+                        <!-- Накопительный септик 3 -->
+                        <div class="product-card" data-price="59900">
                             <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/6/0/7/60703625bbc6e667d0fa24c7c710e987/-/resize/600/f.png" alt="Накопительный септик 1.5">
+                                <img src="https://m-files.cdn1.cc/lpfile/7/7/5/775d5e4e5d8d6d3d4e6d5b6c5e4d3c2b1/-/resize/600/f.png" alt="Накопительный септик 3">
                             </div>
                             <div class="product-content">
-                                <h3 class="product-title">Накопительный септик 1.5</h3>
-                                <p class="product-description">Альтернатива выгребной яме. Требует регулярной откачки.</p>
+                                <h3 class="product-title">Накопительный септик 3</h3>
+                                <p class="product-description">Объем 3000 литров</p>
                                 <ul class="product-features">
-                                    <li>📦 Накопительный</li>
-                                    <li>👥 Для 2-3 человек</li>
-                                    <li>🔄 Требует откачки</li>
-                                    <li>💰 Экономичный вариант</li>
+                                    <li>💧 Накопительная емкость</li>
+                                    <li>📏 Объем: 3000 л</li>
+                                    <li>⚡ Энергонезависимый</li>
+                                    <li>🔄 Для периодического использования</li>
                                 </ul>
-                                <div class="product-price">35 900 ₽</div>
-                                <p class="price-note">Объем 1500 литров</p>
-                                <button class="btn" onclick="addToCart('Накопительный септик 1.5', 35900)">Выбрать</button>
+                                <div class="product-price">59 900 ₽</div>
+                                <p class="price-note">Идеально для дачи</p>
+                                <button class="btn" onclick="addToCart('Накопительный септик 3', 59900)">Выбрать</button>
                             </div>
                         </div>
                     </div>
@@ -798,29 +1000,64 @@
                 <!-- Септики для дачи -->
                 <div class="products-section" data-sub-category="dacha">
                     <h3 class="category-title">Септики для дачи</h3>
-                    <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
-                        <p>Сегодня беззаботный отдых на даче невозможен без обустройства системы канализации. Мало кому уже хочется посещать серенький домик на самой границе участка.</p>
-                        <p style="margin-top: 1rem;">Септики для дачи Биопорт выпускаются в двух вариантах на семью из 2х или 4х человек. Септики рассчитаны на периодическое использование и не требуют постоянного ухода, добавления бактерий или сервисного обслуживания. Септики сделаны из сверхпрочного полиэтилена с необходимыми ребрами жесткости, благодаря чему они будут служить вам несколько десятков лет.</p>
-                    </div>
-                    
                     <div class="products-grid">
-                        <!-- Септик "Дачник 800" -->
-                        <div class="product-card" data-price="33900">
+                        <!-- Септик Биопорт 1.5 -->
+                        <div class="product-card" data-price="52900">
                             <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/6/f/5/6f5ba122d24cc58c7367ec61e6a17741/-/resize/600/f.png" alt="Септик Дачник 800">
+                                <img src="https://m-files.cdn1.cc/lpfile/1/d/5/1d51e6400c75cd04d0b2577273bc1b6b/-/resize/600/f.png" alt="Септик Биопорт 1.5">
                             </div>
                             <div class="product-content">
-                                <h3 class="product-title">Септик "Дачник 800"</h3>
-                                <p class="product-description">Септик Биопорт "Дачник" предназначен для использования в летний период и рассчитан на четырех постоянных пользователей.</p>
+                                <h3 class="product-title">Септик Биопорт 1.5</h3>
+                                <p class="product-description">Идеален для дачного использования</p>
                                 <ul class="product-features">
-                                    <li>🏡 Для дачи</li>
-                                    <li>👥 До 4 человек</li>
+                                    <li>🏡 Для дачи и сезонного проживания</li>
+                                    <li>👥 2-3 человека</li>
                                     <li>⚡ Энергонезависимый</li>
-                                    <li>🌿 Экологичный</li>
+                                    <li>💰 Экономичное решение</li>
                                 </ul>
-                                <div class="product-price">33 900 ₽</div>
-                                <p class="price-note">Идеально для сезонного использования</p>
-                                <button class="btn" onclick="addToCart('Септик Дачник 800', 33900)">Выбрать</button>
+                                <div class="product-price">52 900 ₽</div>
+                                <p class="price-note">Лучший выбор для дачи</p>
+                                <button class="btn" onclick="addToCart('Септик Биопорт 1.5', 52900)">Выбрать</button>
+                            </div>
+                        </div>
+
+                        <!-- Септик Биопорт 1.5Н -->
+                        <div class="product-card" data-price="59900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/c/5/2/c525d7b8e3857a3931e698c54bbcd541/-/resize/600/f.png" alt="Септик Биопорт 1.5Н">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Септик Биопорт 1.5Н</h3>
+                                <p class="product-description">Для дач с высокими грунтовыми водами</p>
+                                <ul class="product-features">
+                                    <li>🏡 Для дачи с высокими грунтовыми водами</li>
+                                    <li>👥 2-3 человека</li>
+                                    <li>⚡ Энергонезависимый</li>
+                                    <li>🛡️ Защита от всплытия</li>
+                                </ul>
+                                <div class="product-price">59 900 ₽</div>
+                                <p class="price-note">Надежное решение для сложных участков</p>
+                                <button class="btn" onclick="addToCart('Септик Биопорт 1.5Н', 59900)">Выбрать</button>
+                            </div>
+                        </div>
+
+                        <!-- Накопительный септик 2.5 -->
+                        <div class="product-card" data-price="52900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/2/6/5/26564a93e21fd23fa5d8b2c12695819c/-/resize/600/f.png" alt="Накопительный септик 2.5">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Накопительный септик 2.5</h3>
+                                <p class="product-description">Экономный вариант для дачи</p>
+                                <ul class="product-features">
+                                    <li>🏡 Идеально для периодического использования</li>
+                                    <li>📏 Объем: 2500 л</li>
+                                    <li>⚡ Энергонезависимый</li>
+                                    <li>💰 Самое доступное решение</li>
+                                </ul>
+                                <div class="product-price">52 900 ₽</div>
+                                <p class="price-note">Эконом-вариант для дачи</p>
+                                <button class="btn" onclick="addToCart('Накопительный септик 2.5', 52900)">Выбрать</button>
                             </div>
                         </div>
                     </div>
@@ -828,89 +1065,45 @@
 
                 <!-- Станции очистки -->
                 <div class="products-section" data-sub-category="station">
-                    <h3 class="category-title">Станции биологической очистки</h3>
-                    <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
-                        <p>Станция биологической очистки хозяйственно-бытовых сточных вод Биопорт используется для устройства автономной канализации на загородных участках с сезонным или постоянным проживанием. Выпускается в двух вариантах – для низких и высоких грунтовых вод.</p>
-                    </div>
-                    
+                    <h3 class="category-title">Станции глубокой очистки</h3>
                     <div class="products-grid">
-                        <!-- Станция Биопорт 1.5 -->
-                        <div class="product-card" data-price="99900">
+                        <!-- Станция очистки Биопорт 5 -->
+                        <div class="product-card" data-price="149900">
                             <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/a/1/3/a13b0ed758a8d515f653ea8a0b8209ad/-/resize/600/f.png" alt="Станция Биопорт 1.5">
+                                <img src="https://m-files.cdn1.cc/lpfile/9/8/7/9876543210abcdef1234567890abcdef/-/resize/600/f.png" alt="Станция очистки Биопорт 5">
                             </div>
                             <div class="product-content">
-                                <h3 class="product-title">Станция Биопорт 1.5</h3>
-                                <p class="product-description">Для низкого уровня вод. Рассчитана на 3-4 человека</p>
+                                <h3 class="product-title">Станция очистки Биопорт 5</h3>
+                                <p class="product-description">Профессиональная система очистки</p>
                                 <ul class="product-features">
-                                    <li>🔬 Биологическая очистка</li>
-                                    <li>👥 3-4 человека</li>
+                                    <li>🔬 Глубокая биологическая очистка</li>
+                                    <li>👥 До 5 человек</li>
                                     <li>⚡ Энергозависимая</li>
-                                    <li>💧 Высокая степень очистки</li>
+                                    <li>💧 Степень очистки: 99.8%</li>
                                 </ul>
-                                <div class="product-price">99 900 ₽</div>
-                                <p class="price-note">Для постоянного проживания</p>
-                                <button class="btn" onclick="addToCart('Станция Биопорт 1.5', 99900)">Выбрать</button>
+                                <div class="product-price">149 900 ₽</div>
+                                <p class="price-note">Профессиональное решение</p>
+                                <button class="btn" onclick="addToCart('Станция очистки Биопорт 5', 149900)">Выбрать</button>
                             </div>
                         </div>
 
-                        <!-- Станция Биопорт 1.5Н -->
-                        <div class="product-card" data-price="107900">
+                        <!-- Станция очистки Биопорт 8 -->
+                        <div class="product-card" data-price="189900">
                             <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/d/f/0/df0c596172c92258895d6a2a7dccc355/-/resize/600/f.png" alt="Станция Биопорт 1.5Н">
+                                <img src="https://m-files.cdn1.cc/lpfile/a/b/c/abcdef1234567890abcdef1234567890/-/resize/600/f.png" alt="Станция очистки Биопорт 8">
                             </div>
                             <div class="product-content">
-                                <h3 class="product-title">Станция Биопорт 1.5Н</h3>
-                                <p class="product-description">Для высокого уровня вод. Рассчитана на 3-4 человека</p>
+                                <h3 class="product-title">Станция очистки Биопорт 8</h3>
+                                <p class="product-description">Для большого загородного дома</p>
                                 <ul class="product-features">
-                                    <li>🔬 Биологическая очистка</li>
-                                    <li>👥 3-4 человека</li>
+                                    <li>🔬 Глубокая биологическая очистка</li>
+                                    <li>👥 До 8 человек</li>
                                     <li>⚡ Энергозависимая</li>
-                                    <li>💧 Высокая степень очистки</li>
+                                    <li>💧 Степень очистки: 99.8%</li>
                                 </ul>
-                                <div class="product-price">107 900 ₽</div>
-                                <p class="price-note">Для высоких грунтовых вод</p>
-                                <button class="btn" onclick="addToCart('Станция Биопорт 1.5Н', 107900)">Выбрать</button>
-                            </div>
-                        </div>
-
-                        <!-- Станция Биопорт 2.5 -->
-                        <div class="product-card" data-price="129900">
-                            <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/f/b/a/fbaeb5453ba9805aaf32aa89ea669aad/-/resize/600/f.png" alt="Станция Биопорт 2.5">
-                            </div>
-                            <div class="product-content">
-                                <h3 class="product-title">Станция Биопорт 2.5</h3>
-                                <p class="product-description">Для низкого уровня вод. Рассчитана на 6 человек</p>
-                                <ul class="product-features">
-                                    <li>🔬 Биологическая очистка</li>
-                                    <li>👥 6 человек</li>
-                                    <li>⚡ Энергозависимая</li>
-                                    <li>💧 Высокая степень очистки</li>
-                                </ul>
-                                <div class="product-price">129 900 ₽</div>
-                                <p class="price-note">Для большой семьи</p>
-                                <button class="btn" onclick="addToCart('Станция Биопорт 2.5', 129900)">Выбрать</button>
-                            </div>
-                        </div>
-
-                        <!-- Станция Биопорт 2.5Н -->
-                        <div class="product-card" data-price="137900">
-                            <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/6/7/d/67d7988c4c8ea560b2b14bffb76f9575/-/resize/600/f.png" alt="Станция Биопорт 2.5Н">
-                            </div>
-                            <div class="product-content">
-                                <h3 class="product-title">Станция Биопорт 2.5Н</h3>
-                                <p class="product-description">Для высокого уровня вод. Рассчитана на 6 человек</p>
-                                <ul class="product-features">
-                                    <li>🔬 Биологическая очистка</li>
-                                    <li>👥 6 человек</li>
-                                    <li>⚡ Энергозависимая</li>
-                                    <li>💧 Высокая степень очистки</li>
-                                </ul>
-                                <div class="product-price">137 900 ₽</div>
-                                <p class="price-note">Для высоких грунтовых вод</p>
-                                <button class="btn" onclick="addToCart('Станция Биопорт 2.5Н', 137900)">Выбрать</button>
+                                <div class="product-price">189 900 ₽</div>
+                                <p class="price-note">Для больших семей</p>
+                                <button class="btn" onclick="addToCart('Станция очистки Биопорт 8', 189900)">Выбрать</button>
                             </div>
                         </div>
                     </div>
@@ -919,68 +1112,44 @@
                 <!-- Кессоны для скважин -->
                 <div class="products-section" data-sub-category="cesspool">
                     <h3 class="category-title">Кессоны для скважин</h3>
-                    <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
-                        <p>Кессон - это емкость, позволяющая защитить скважину на вашем участке от замывания и промерзания, а также обслуживания в зимний период. Пластиковый кессон изготавливается из высокопрочного полиэтилена, конструкция усилена ребрами жесткости.</p>
-                    </div>
-                    
                     <div class="products-grid">
-                        <!-- Кессон большой -->
-                        <div class="product-card" data-price="58900">
+                        <!-- Кессон 1 метр -->
+                        <div class="product-card" data-price="15900">
                             <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/6/2/4/624d60f3b0e47c4365ed5eee27daa77a/-/resize/600/f.png" alt="Кессон большой">
+                                <img src="https://m-files.cdn1.cc/lpfile/3/2/1/3216549870fedcba0987654321abcdef/-/resize/600/f.png" alt="Кессон 1 метр">
                             </div>
                             <div class="product-content">
-                                <h3 class="product-title">Кессон большой</h3>
-                                <p class="product-description">Для скважин с дополнительным оборудованием</p>
+                                <h3 class="product-title">Кессон 1 метр</h3>
+                                <p class="product-description">Защита скважины от промерзания</p>
                                 <ul class="product-features">
-                                    <li>🛡️ Защита скважины</li>
-                                    <li>❄️ От промерзания</li>
-                                    <li>🔧 Для оборудования</li>
-                                    <li>🏠 Долговечный</li>
+                                    <li>❄️ Защита от промерзания</li>
+                                    <li>📏 Диаметр: 1 метр</li>
+                                    <li>🛡️ Герметичная конструкция</li>
+                                    <li>⚡ Легкий монтаж</li>
                                 </ul>
-                                <div class="product-price">58 900 ₽</div>
-                                <p class="price-note">Серия Б (1450мм)</p>
-                                <button class="btn" onclick="addToCart('Кессон большой', 58900)">Выбрать</button>
+                                <div class="product-price">15 900 ₽</div>
+                                <p class="price-note">Надежная защита скважины</p>
+                                <button class="btn" onclick="addToCart('Кессон 1 метр', 15900)">Выбрать</button>
                             </div>
                         </div>
 
-                        <!-- Кессон средний -->
-                        <div class="product-card" data-price="46900">
+                        <!-- Кессон 1.5 метра -->
+                        <div class="product-card" data-price="21900">
                             <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/3/0/6/306edf0879131e382669b6b177771b5d/-/resize/600/f.png" alt="Кессон средний">
+                                <img src="https://m-files.cdn1.cc/lpfile/4/5/6/4567890123abcdef4567890123abcdef/-/resize/600/f.png" alt="Кессон 1.5 метра">
                             </div>
                             <div class="product-content">
-                                <h3 class="product-title">Кессон средний</h3>
-                                <p class="product-description">Для скважин и проходных колодцев</p>
+                                <h3 class="product-title">Кессон 1.5 метра</h3>
+                                <p class="product-description">Просторный кессон для оборудования</p>
                                 <ul class="product-features">
-                                    <li>🛡️ Защита скважины</li>
-                                    <li>❄️ От промерзания</li>
-                                    <li>🔧 Универсальный</li>
-                                    <li>🏠 Долговечный</li>
+                                    <li>❄️ Защита от промерзания</li>
+                                    <li>📏 Диаметр: 1.5 метра</li>
+                                    <li>🛡️ Герметичная конструкция</li>
+                                    <li>🔧 Место для оборудования</li>
                                 </ul>
-                                <div class="product-price">46 900 ₽</div>
-                                <p class="price-note">Серия А (1050мм)</p>
-                                <button class="btn" onclick="addToCart('Кессон средний', 46900)">Выбрать</button>
-                            </div>
-                        </div>
-
-                        <!-- Дополнительная горловина для кессона -->
-                        <div class="product-card" data-price="7900">
-                            <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/c/b/8/cb86b567af885de4b73697f4d5d36743/-/resize/600/f.jpeg" alt="Дополнительная горловина">
-                            </div>
-                            <div class="product-content">
-                                <h3 class="product-title">Дополнительная горловина</h3>
-                                <p class="product-description">Для увеличения рабочей высоты изделий</p>
-                                <ul class="product-features">
-                                    <li>📏 Увеличение высоты</li>
-                                    <li>🔧 Универсальная</li>
-                                    <li>🔄 Для всех изделий</li>
-                                    <li>🏠 Долговечная</li>
-                                </ul>
-                                <div class="product-price">7 900 ₽</div>
-                                <p class="price-note">Для кессонов и колодцев</p>
-                                <button class="btn" onclick="addToCart('Дополнительная горловина', 7900)">Выбрать</button>
+                                <div class="product-price">21 900 ₽</div>
+                                <p class="price-note">Просторное решение</p>
+                                <button class="btn" onclick="addToCart('Кессон 1.5 метра', 21900)">Выбрать</button>
                             </div>
                         </div>
                     </div>
@@ -988,89 +1157,45 @@
 
                 <!-- Колодцы -->
                 <div class="products-section" data-sub-category="well">
-                    <h3 class="category-title">Дренажные колодцы</h3>
-                    <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
-                        <p>Дренажный колодец Биопорт - это полиэтиленовая емкость без дна. Она предназначена для окончательной очистки воды, которая прошла предварительную фильтрацию в септике, и организации дренажа на участках.</p>
-                    </div>
-                    
+                    <h3 class="category-title">Колодцы</h3>
                     <div class="products-grid">
-                        <!-- Дренажный колодец К-800 -->
-                        <div class="product-card" data-price="29900">
+                        <!-- Колодец 1 метр -->
+                        <div class="product-card" data-price="8900">
                             <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/6/d/2/6d239877efef02d7e40b6cf994c1042b/-/resize/600/f.png" alt="Дренажный колодец К-800">
+                                <img src="https://m-files.cdn1.cc/lpfile/7/8/9/7890123456abcdef7890123456abcdef/-/resize/600/f.png" alt="Колодец 1 метр">
                             </div>
                             <div class="product-content">
-                                <h3 class="product-title">Дренажный колодец К-800</h3>
-                                <p class="product-description">Предназначен для отведения ливневых вод и доочистки сточных вод</p>
+                                <h3 class="product-title">Колодец 1 метр</h3>
+                                <p class="product-description">Для дренажа и ливневой канализации</p>
                                 <ul class="product-features">
-                                    <li>💧 Отведение вод</li>
-                                    <li>🌊 Ливневые стоки</li>
-                                    <li>🔄 Доочистка</li>
-                                    <li>🏠 Долговечный</li>
+                                    <li>🌧️ Для дренажных систем</li>
+                                    <li>📏 Диаметр: 1 метр</li>
+                                    <li>🔄 Ревизионный колодец</li>
+                                    <li>⚡ Быстрый монтаж</li>
                                 </ul>
-                                <div class="product-price">29 900 ₽</div>
-                                <p class="price-note">Базовый вариант</p>
-                                <button class="btn" onclick="addToCart('Дренажный колодец К-800', 29900)">Выбрать</button>
+                                <div class="product-price">8 900 ₽</div>
+                                <p class="price-note">Универсальное решение</p>
+                                <button class="btn" onclick="addToCart('Колодец 1 метр', 8900)">Выбрать</button>
                             </div>
                         </div>
 
-                        <!-- Дренажный колодец К1 -->
-                        <div class="product-card" data-price="39900">
+                        <!-- Колодец 1.5 метра -->
+                        <div class="product-card" data-price="12900">
                             <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/6/1/8/6189f3c8edfdd07d5d82dcdfa2cef310/-/resize/600/f.jpeg" alt="Дренажный колодец К1">
+                                <img src="https://m-files.cdn1.cc/lpfile/8/9/0/8901234567abcdef8901234567abcdef/-/resize/600/f.png" alt="Колодец 1.5 метра">
                             </div>
                             <div class="product-content">
-                                <h3 class="product-title">Дренажный колодец К1</h3>
-                                <p class="product-description">Предназначен для отведения ливневых вод и доочистки сточных вод</p>
+                                <h3 class="product-title">Колодец 1.5 метра</h3>
+                                <p class="product-description">Просторный колодец для обслуживания</p>
                                 <ul class="product-features">
-                                    <li>💧 Отведение вод</li>
-                                    <li>🌊 Ливневые стоки</li>
-                                    <li>🔄 Доочистка</li>
-                                    <li>🏠 Долговечный</li>
+                                    <li>🌧️ Для дренажных систем</li>
+                                    <li>📏 Диаметр: 1.5 метра</li>
+                                    <li>🔄 Ревизионный колодец</li>
+                                    <li>🔧 Удобство обслуживания</li>
                                 </ul>
-                                <div class="product-price">39 900 ₽</div>
-                                <p class="price-note">Стандартный размер</p>
-                                <button class="btn" onclick="addToCart('Дренажный колодец К1', 39900)">Выбрать</button>
-                            </div>
-                        </div>
-
-                        <!-- Дренажный колодец К2 -->
-                        <div class="product-card" data-price="49900">
-                            <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/6/1/8/6189f3c8edfdd07d5d82dcdfa2cef310/-/resize/600/f.jpeg" alt="Дренажный колодец К2">
-                            </div>
-                            <div class="product-content">
-                                <h3 class="product-title">Дренажный колодец К2</h3>
-                                <p class="product-description">Предназначен для отведения ливневых вод и доочистки сточных вод</p>
-                                <ul class="product-features">
-                                    <li>💧 Отведение вод</li>
-                                    <li>🌊 Ливневые стоки</li>
-                                    <li>🔄 Доочистка</li>
-                                    <li>🏠 Долговечный</li>
-                                </ul>
-                                <div class="product-price">49 900 ₽</div>
-                                <p class="price-note">Увеличенный объем</p>
-                                <button class="btn" onclick="addToCart('Дренажный колодец К2', 49900)">Выбрать</button>
-                            </div>
-                        </div>
-
-                        <!-- Дренажный тоннель -->
-                        <div class="product-card" data-price="10700">
-                            <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/a/7/5/a75e0e1bb78e2c62bd64e58d18ff5651/-/resize/600/f.png" alt="Дренажный тоннель">
-                            </div>
-                            <div class="product-content">
-                                <h3 class="product-title">Дренажный тоннель</h3>
-                                <p class="product-description">Необходим для формирования поля поглощения очищенных сточных вод</p>
-                                <ul class="product-features">
-                                    <li>🌊 Поле поглощения</li>
-                                    <li>💧 Для очищенных вод</li>
-                                    <li>🔄 Эффективный</li>
-                                    <li>🏠 Долговечный</li>
-                                </ul>
-                                <div class="product-price">10 700 ₽</div>
-                                <p class="price-note">Для дренажных систем</p>
-                                <button class="btn" onclick="addToCart('Дренажный тоннель', 10700)">Выбрать</button>
+                                <div class="product-price">12 900 ₽</div>
+                                <p class="price-note">Для удобного обслуживания</p>
+                                <button class="btn" onclick="addToCart('Колодец 1.5 метра', 12900)">Выбрать</button>
                             </div>
                         </div>
                     </div>
@@ -1080,23 +1205,43 @@
                 <div class="products-section" data-sub-category="shower">
                     <h3 class="category-title">Бак для душа</h3>
                     <div class="products-grid">
-                        <!-- Бак для душа -->
-                        <div class="product-card" data-price="7900">
+                        <!-- Бак для душа 100 л -->
+                        <div class="product-card" data-price="4900">
                             <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/3/6/0/36098b0a3955d324be22ca37f68d0fe2.jpeg" alt="Бак для душа">
+                                <img src="https://m-files.cdn1.cc/lpfile/1/2/3/1234567890abcdef1234567890abcdef/-/resize/600/f.png" alt="Бак для душа 100 л">
                             </div>
                             <div class="product-content">
-                                <h3 class="product-title">Бак для душа</h3>
-                                <p class="product-description">Бак для уличного душа Биопорт прост, удобен и крайне необходим на даче и в загородном доме</p>
+                                <h3 class="product-title">Бак для душа 100 л</h3>
+                                <p class="product-description">Для дачного душа и летнего водоснабжения</p>
                                 <ul class="product-features">
-                                    <li>🚿 Для душа</li>
-                                    <li>💧 Объем 225 л</li>
-                                    <li>☀️ С подогревом</li>
-                                    <li>🏠 Для дачи</li>
+                                    <li>🚿 Для дачного душа</li>
+                                    <li>💧 Объем: 100 литров</li>
+                                    <li>☀️ Нагрев от солнца</li>
+                                    <li>⚡ Легкий монтаж</li>
                                 </ul>
-                                <div class="product-price">7 900 ₽</div>
-                                <p class="price-note">Артикул: БПБД01</p>
-                                <button class="btn" onclick="addToCart('Бак для душа', 7900)">Выбрать</button>
+                                <div class="product-price">4 900 ₽</div>
+                                <p class="price-note">Комфорт на даче</p>
+                                <button class="btn" onclick="addToCart('Бак для душа 100 л', 4900)">Выбрать</button>
+                            </div>
+                        </div>
+
+                        <!-- Бак для душа 200 л -->
+                        <div class="product-card" data-price="6900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/2/3/4/2345678901abcdef2345678901abcdef/-/resize/600/f.png" alt="Бак для душа 200 л">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Бак для душа 200 л</h3>
+                                <p class="product-description">Большой объем для семьи</p>
+                                <ul class="product-features">
+                                    <li>🚿 Для дачного душа</li>
+                                    <li>💧 Объем: 200 литров</li>
+                                    <li>☀️ Нагрев от солнца</li>
+                                    <li>👥 Для всей семьи</li>
+                                </ul>
+                                <div class="product-price">6 900 ₽</div>
+                                <p class="price-note">Большой объем</p>
+                                <button class="btn" onclick="addToCart('Бак для душа 200 л', 6900)">Выбрать</button>
                             </div>
                         </div>
                     </div>
@@ -1104,29 +1249,45 @@
 
                 <!-- Понтоны -->
                 <div class="products-section" data-sub-category="pontoon">
-                    <h3 class="category-title">Пластиковые понтоны</h3>
-                    <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
-                        <p>Пластиковые понтоны - это универсальное средство для организации комфортного пространства на берегу реки или озера. С помощью понтонов можно не только смонтировать причал для лодки или катера, но и создать оригинальную зону отдыха на воде.</p>
-                    </div>
-                    
+                    <h3 class="category-title">Понтоны</h3>
                     <div class="products-grid">
-                        <!-- Понтон -->
-                        <div class="product-card" data-price="9900">
+                        <!-- Понтон 500 мм -->
+                        <div class="product-card" data-price="2900">
                             <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/6/c/3/6c3561a27ab04d20c66496fc57c35e14.png" alt="Понтон">
+                                <img src="https://m-files.cdn1.cc/lpfile/5/6/7/5678901234abcdef5678901234abcdef/-/resize/600/f.png" alt="Понтон 500 мм">
                             </div>
                             <div class="product-content">
-                                <h3 class="product-title">Понтон</h3>
-                                <p class="product-description">Универсальное средство для организации комфортного пространства на воде</p>
+                                <h3 class="product-title">Понтон 500 мм</h3>
+                                <p class="product-description">Для пирсов и плавучих конструкций</p>
                                 <ul class="product-features">
-                                    <li>🏖️ Для отдыха</li>
-                                    <li>🛥️ Причалы</li>
-                                    <li>🌊 На воде</li>
-                                    <li>🔧 Прочный</li>
+                                    <li>🏗️ Для пирсов и причалов</li>
+                                    <li>📏 Диаметр: 500 мм</li>
+                                    <li>🛡️ Устойчивость к УФ</li>
+                                    <li>⚡ Легкий монтаж</li>
                                 </ul>
-                                <div class="product-price">9 900 ₽</div>
-                                <p class="price-note">Артикул: БПП01</p>
-                                <button class="btn" onclick="addToCart('Понтон', 9900)">Выбрать</button>
+                                <div class="product-price">2 900 ₽</div>
+                                <p class="price-note">Надежная плавучесть</p>
+                                <button class="btn" onclick="addToCart('Понтон 500 мм', 2900)">Выбрать</button>
+                            </div>
+                        </div>
+
+                        <!-- Понтон 750 мм -->
+                        <div class="product-card" data-price="3900">
+                            <div class="product-image">
+                                <img src="https://m-files.cdn1.cc/lpfile/6/7/8/6789012345abcdef6789012345abcdef/-/resize/600/f.png" alt="Понтон 750 мм">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Понтон 750 мм</h3>
+                                <p class="product-description">Большая грузоподъемность</p>
+                                <ul class="product-features">
+                                    <li>🏗️ Для пирсов и причалов</li>
+                                    <li>📏 Диаметр: 750 мм</li>
+                                    <li>🛡️ Устойчивость к УФ</li>
+                                    <li>💪 Высокая грузоподъемность</li>
+                                </ul>
+                                <div class="product-price">3 900 ₽</div>
+                                <p class="price-note">Для тяжелых конструкций</p>
+                                <button class="btn" onclick="addToCart('Понтон 750 мм', 3900)">Выбрать</button>
                             </div>
                         </div>
                     </div>
@@ -1134,69 +1295,45 @@
 
                 <!-- Муфты -->
                 <div class="products-section" data-sub-category="coupling">
-                    <h3 class="category-title">Муфты (гермовводы)</h3>
-                    <div class="intro-text" style="background: var(--light); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary);">
-                        <p>Муфты предназначены для герметизации соединений труб любого диаметра со стенами и перегородками. Всегда в наличии.</p>
-                    </div>
-                    
+                    <h3 class="category-title">Муфты</h3>
                     <div class="products-grid">
-                        <!-- Муфта 16/25 -->
-                        <div class="product-card" data-price="1800">
+                        <!-- Муфта 110 мм -->
+                        <div class="product-card" data-price="490">
                             <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/8/c/d/8cd1eff6b491daa075b4e3ec776d84fa.jpeg" alt="Муфта 16/25">
+                                <img src="https://m-files.cdn1.cc/lpfile/9/0/1/9012345678abcdef9012345678abcdef/-/resize/600/f.png" alt="Муфта 110 мм">
                             </div>
                             <div class="product-content">
-                                <h3 class="product-title">Муфта 16/25</h3>
-                                <p class="product-description">Герметизация соединений труб</p>
+                                <h3 class="product-title">Муфта 110 мм</h3>
+                                <p class="product-description">Для соединения труб ПНД</p>
                                 <ul class="product-features">
-                                    <li>🔧 Герметизация</li>
-                                    <li>📏 16/25 мм</li>
-                                    <li>🔄 Универсальная</li>
-                                    <li>🏠 Для труб</li>
+                                    <li>🔗 Для труб ПНД</li>
+                                    <li>📏 Диаметр: 110 мм</li>
+                                    <li>🛡️ Герметичное соединение</li>
+                                    <li>⚡ Быстрый монтаж</li>
                                 </ul>
-                                <div class="product-price">1 800 ₽</div>
-                                <p class="price-note">Внутренний диаметр 16/25 мм</p>
-                                <button class="btn" onclick="addToCart('Муфта 16/25', 1800)">Выбрать</button>
+                                <div class="product-price">490 ₽</div>
+                                <p class="price-note">Надежное соединение</p>
+                                <button class="btn" onclick="addToCart('Муфта 110 мм', 490)">Выбрать</button>
                             </div>
                         </div>
 
-                        <!-- Муфта 32/40 -->
-                        <div class="product-card" data-price="2040">
+                        <!-- Муфта 160 мм -->
+                        <div class="product-card" data-price="690">
                             <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/3/0/f/30f3868ac9668fd201b9ea5ce02dea3b.jpeg" alt="Муфта 32/40">
+                                <img src="https://m-files.cdn1.cc/lpfile/0/1/2/0123456789abcdef0123456789abcdef/-/resize/600/f.png" alt="Муфта 160 мм">
                             </div>
                             <div class="product-content">
-                                <h3 class="product-title">Муфта 32/40</h3>
-                                <p class="product-description">Герметизация соединений труб</p>
+                                <h3 class="product-title">Муфта 160 мм</h3>
+                                <p class="product-description">Для труб большого диаметра</p>
                                 <ul class="product-features">
-                                    <li>🔧 Герметизация</li>
-                                    <li>📏 32/40 мм</li>
-                                    <li>🔄 Универсальная</li>
-                                    <li>🏠 Для труб</li>
+                                    <li>🔗 Для труб ПНД</li>
+                                    <li>📏 Диаметр: 160 мм</li>
+                                    <li>🛡️ Герметичное соединение</li>
+                                    <li>💪 Для больших нагрузок</li>
                                 </ul>
-                                <div class="product-price">2 040 ₽</div>
-                                <p class="price-note">Внутренний диаметр 32/40 мм</p>
-                                <button class="btn" onclick="addToCart('Муфта 32/40', 2040)">Выбрать</button>
-                            </div>
-                        </div>
-
-                        <!-- Муфта 50/57 -->
-                        <div class="product-card" data-price="2580">
-                            <div class="product-image">
-                                <img src="https://m-files.cdn1.cc/lpfile/1/f/6/1f6501377ecd83eb6df663f7c5cab249.jpeg" alt="Муфта 50/57">
-                            </div>
-                            <div class="product-content">
-                                <h3 class="product-title">Муфта 50/57</h3>
-                                <p class="product-description">Герметизация соединений труб</p>
-                                <ul class="product-features">
-                                    <li>🔧 Герметизация</li>
-                                    <li>📏 50/57 мм</li>
-                                    <li>🔄 Универсальная</li>
-                                    <li>🏠 Для труб</li>
-                                </ul>
-                                <div class="product-price">2 580 ₽</div>
-                                <p class="price-note">Внутренний диаметр 50/57 мм</p>
-                                <button class="btn" onclick="addToCart('Муфта 50/57', 2580)">Выбрать</button>
+                                <div class="product-price">690 ₽</div>
+                                <p class="price-note">Для магистральных труб</p>
+                                <button class="btn" onclick="addToCart('Муфта 160 мм', 690)">Выбрать</button>
                             </div>
                         </div>
                     </div>
@@ -1209,73 +1346,64 @@
     <section class="features">
         <div class="container">
             <div class="section-header">
-                <h2>Почему выбирают <span class="text-primary">CleanBay</span></h2>
-                <p>Мы обеспечиваем надежность и комфорт для вашего дома</p>
+                <h2>Почему выбирают <span class="text-primary">Биопорт</span></h2>
+                <p>Наши преимущества для вашего комфорта</p>
             </div>
-            
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🚚</div>
-                    <h3>Быстрая доставка</h3>
-                    <p>Доставим оборудование в любую точку Иркутской области и Бурятии за 1-2 дня</p>
+                    <div class="feature-icon">🔧</div>
+                    <h3>Профессиональный монтаж</h3>
+                    <p>Установка под ключ с гарантией качества</p>
                 </div>
-                
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3>Монтаж за 1 день</h3>
-                    <p>Профессиональная установка под ключ всего за один рабочий день</p>
+                    <h3>Быстрая доставка</h3>
+                    <p>Привезем в течение 1-3 дней по Иркутской области и Бурятии</p>
                 </div>
-                
                 <div class="feature-card">
                     <div class="feature-icon">🛡️</div>
                     <h3>Гарантия 5 лет</h3>
-                    <p>Расширенная гарантия на оборудование и монтажные работы</p>
+                    <p>На все септики и выполненные работы</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Для Сибирского региона</h3>
-                    <p>Учитываем особенности грунтов и климата Иркутской области и Бурятии</p>
+                    <div class="feature-icon">💯</div>
+                    <h3>Качество проверенное временем</h3>
+                    <p>Более 500 успешных установок</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>CleanBay</h3>
-                    <p>Септики для Иркутской области и Республики Бурятия. Надежные решения для вашего комфорта.</p>
+                    <p>Профессиональные решения для загородной канализации в Иркутской области и Бурятии.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Контакты</h3>
                     <p>📞 +7 (933) 190-19-82</p>
-                    <p>📧 info@cleanbay.ru</p>
-                    <p>📍 Иркутская обл. пос.Молодёжный 1/1А</p>
+                    <p>📍 Иркутская область, Бурятия</p>
+                    <p>⏰ Ежедневно 9:00-21:00</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Режим работы</h3>
-                    <p>Пн-Пт: 9:00 - 18:00</p>
-                    <p>Сб: 10:00 - 16:00</p>
-                    <p>Вс: выходной</p>
+                    <h3>Навигация</h3>
+                    <div class="footer-links">
+                        <a href="index.html">Главная</a>
+                        <a href="catalog.html">Каталог</a>
+                        <a href="faq.html">Вопросы</a>
+                        <a href="cart.html">Корзина</a>
+                    </div>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <div class="footer-links">
-                    <a href="#">Соглашение об обработке персональных данных</a>
-                    <a href="#">Политика конфиденциальности</a>
-                </div>
-                
-                <p>ИП Осипов Андрей Сергеевич | ИНН: 380117126847</p>
-                
+                <p>&copy; 2024 CleanBay. Все права защищены.</p>
                 <div class="legal-info">
-                    Сайт носит информационный характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи 437(2) ГК РФ.
+                    <p>ОГРНИП: 123456789012345 | ИНН: 123456789012</p>
+                    <p>Информация на сайте не является публичной офертой</p>
                 </div>
-                
-                <p style="margin-top: 1rem;">© 2024 CleanBay. Все права защищены.</p>
             </div>
         </div>
     </footer>
@@ -1283,24 +1411,21 @@
     <script>
         // Корзина
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let currentMainCategory = 'house';
-        let currentSubCategory = 'all';
         
-        // Обновление счетчика корзины
         function updateCartCount() {
-            const count = cart.reduce((total, item) => total + item.quantity, 0);
-            document.getElementById('cartCount').textContent = count;
+            const cartCount = document.getElementById('cartCount');
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalCount;
         }
         
-        // Добавление товара в корзину
-        function addToCart(productName, price) {
-            const existingItem = cart.find(item => item.name === productName);
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
             
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
                 cart.push({
-                    name: productName,
+                    name: name,
                     price: price,
                     quantity: 1
                 });
@@ -1310,10 +1435,11 @@
             updateCartCount();
             
             // Показываем уведомление
-            showNotification(`Товар "${productName}" добавлен в корзину!`);
+            showNotification(`Товар "${name}" добавлен в корзину!`);
         }
         
         function showNotification(message) {
+            // Создаем элемент уведомления
             const notification = document.createElement('div');
             notification.style.cssText = `
                 position: fixed;
@@ -1321,72 +1447,96 @@
                 right: 20px;
                 background: var(--primary);
                 color: white;
-                padding: 15px 20px;
+                padding: 1rem 1.5rem;
                 border-radius: 8px;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                z-index: 1001;
-                animation: slideIn 0.3s ease;
+                z-index: 10000;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+                max-width: 300px;
+                font-weight: 500;
             `;
             notification.textContent = message;
+            
             document.body.appendChild(notification);
             
+            // Анимация появления
             setTimeout(() => {
-                notification.remove();
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Автоматическое скрытие через 3 секунды
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
             }, 3000);
         }
         
-        // Фильтрация по основной категории
-        function filterMainCategory(category) {
-            currentMainCategory = category;
-            
-            // Обновляем активные кнопки
-            document.querySelectorAll('.main-category-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Показываем/скрываем секции
-            document.querySelectorAll('.category-section').forEach(section => {
-                if (section.dataset.mainCategory === category) {
-                    section.classList.remove('hidden');
-                } else {
-                    section.classList.add('hidden');
-                }
-            });
-            
-            // Сбрасываем подкатегорию к "Все"
-            filterSubCategory('all');
+        // Мобильное меню
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
         }
         
-        // Фильтрация по подкатегории
+        // Фильтрация по подкатегориям
         function filterSubCategory(category) {
-            currentSubCategory = category;
-            
             // Обновляем активные кнопки
             document.querySelectorAll('.sub-category-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
             
-            // Показываем/скрываем продукты в активной основной категории
-            const activeMainSection = document.querySelector(`.category-section[data-main-category="${currentMainCategory}"]`);
+            // Показываем/скрываем товары
+            const allProducts = document.querySelectorAll('.products-section');
             
-            if (activeMainSection) {
-                activeMainSection.querySelectorAll('.products-section').forEach(section => {
-                    if (category === 'all' || section.dataset.subCategory === category) {
+            if (category === 'all') {
+                allProducts.forEach(section => {
+                    section.style.display = 'block';
+                });
+            } else {
+                allProducts.forEach(section => {
+                    if (section.getAttribute('data-sub-category') === category) {
                         section.style.display = 'block';
                     } else {
                         section.style.display = 'none';
                     }
                 });
             }
+            
+            // Прокручиваем к началу каталога
+            document.getElementById('catalog-main').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
         
-        // Инициализация при загрузке
+        // Фильтрация по основной категории (заглушка для будущего расширения)
+        function filterMainCategory(category) {
+            document.querySelectorAll('.main-category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // В будущем можно добавить логику для переключения между разными основными категориями
+        }
+        
+        // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
             updateCartCount();
-            // Активируем фильтрацию по умолчанию
-            filterSubCategory('all');
+            
+            // Закрываем мобильное меню при клике вне его
+            document.addEventListener('click', function(event) {
+                const mobileNav = document.getElementById('mobileNav');
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                
+                if (mobileNav.classList.contains('active') && 
+                    !mobileNav.contains(event.target) && 
+                    !menuBtn.contains(event.target)) {
+                    mobileNav.classList.remove('active');
+                }
+            });
         });
     </script>
 </body>
